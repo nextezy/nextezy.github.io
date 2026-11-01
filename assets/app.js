@@ -80,7 +80,7 @@
 
   /* --- мини-вики: подсвечиваем первое упоминание термина в каждой главе / карточке --- */
   var W={}, RX=[];
-  WIKI.forEach(function(e){ W[e.id]=e; e.m.forEach(function(src){ try{ RX.push({id:e.id, re:new RegExp(src,"iu")}); }catch(err){} }); });
+  WIKI.forEach(function(e){ W[e.id]=e; e.m.forEach(function(src){ try{ RX.push({id:e.id, re:new RegExp(src,e.cs?"u":"iu")}); }catch(err){} }); });
   var SKIP="A,BUTTON,H2,H3,H4,TH,FIGCAPTION,.w,.lv,.copy,.tag,.sl,.ins-head,.sub";
   function textNodes(root){
     var out=[], tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
