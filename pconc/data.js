@@ -114,9 +114,9 @@ var GEMS = {
   end: {
     note: "",
     groups: [
-      {id:"end-dmg", title:"Урон", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Яростные снаряды (Vicious Projectiles)","Безграничные состояния (Unbound Ailments)","Большая цепь (Greater Chain)|2 лвл"]},
+      {id:"end-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Яростные снаряды (Vicious Projectiles)","Безграничные состояния (Unbound Ailments)","Большая цепь (Greater Chain)|2 лвл"]},
       {id:"end-move", title:"Передвижение", gems:["Удар щитом (Shield Charge)|1 лвл","Ледяной скачок (Frostblink)","Импульс (Momentum)","Ускорение атак (Faster Attacks)"]},
-      {id:"end-aura", title:"Ауры", gems:["Злорадство (Malevolence)","Грация (Grace)","Щит бури (Tempest Shield)"], text:"Злорадство стоит вместо Вестника агонии: шанс отравить теперь закрывают нагрудник и перчатки. Щит бури даёт иммунитет к шоку.", imgs:[["malev","Злорадство"],["tempest","Щит бури"]]},
+      {id:"end-aura", title:"Щит", gems:["Злорадство (Malevolence)","Грация (Grace)","Щит бури (Tempest Shield)"], text:"Злорадство стоит вместо Вестника агонии: шанс отравить теперь закрывают нагрудник и перчатки. Щит бури даёт иммунитет к шоку.", imgs:[["malev","Злорадство"],["tempest","Щит бури"]]},
       {id:"end-extra", title:"Отдельно", gems:["Кровавый угар (Blood Rage)|1 лвл"]},
       {id:"end-def", title:"Защита", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Призыв к бессмертию (Immortal Call)|2 лвл"]},
       {id:"end-mark", title:"Метка", gems:["Метка браконьера (Poacher's Mark)","Метка при попадании (Mark On Hit)","Жизнеотвод (Lifetap)|1 лвл"], text:"Метке обязательно 20% качества, а в зелёном сокете предмета с бонусом к качеству от цвета гнезда будет 30%. Подробно в главе «Эндгейм версия».", imgs:[["poacher","Метка браконьера в зелёном сокете"],["moh","Метка при попадании"]]}
