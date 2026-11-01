@@ -222,3 +222,17 @@ footer .wrap{padding-block:26px;display:flex;justify-content:space-between;gap:1
 .brand .logo{font-family:'Nextezy Logo','Onest',sans-serif;font-weight:900;font-stretch:125%;font-style:italic;font-size:28px;line-height:1;letter-spacing:-.01em;color:#fff;display:inline-block;transform:rotate(-4deg);text-shadow:0 0 18px rgba(139,92,246,.55),2px 2px 0 #4c1d95;padding:4px 2px}
 .brand:hover .logo{color:var(--accent-3)}
 @media (max-width:640px){.brand .logo{display:inline-block;font-size:24px}}
+
+/* Подвал */
+.foot{display:grid!important;gap:8px;justify-content:stretch!important}
+.foot-top{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.foot a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+.foot a:hover{color:var(--fg)}
+.foot-dim{color:var(--dim)}
+.foot-note{margin:0;font-size:15px;color:var(--dim);max-width:90ch;line-height:1.5}
+/* Политика */
+.policy h1{color:var(--fg);font-weight:800;font-size:clamp(32px,4.5vw,46px);letter-spacing:-.02em;line-height:1.1;margin:0 0 6px}
+.policy .upd{color:var(--dim);font-size:16px;margin:0 0 28px}
+.policy h2{font-size:26px;margin:40px 0 12px}
+.policy b{color:var(--fg)}
+.policy a{overflow-wrap:anywhere}
