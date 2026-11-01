@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#0b0b10">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css?v=20261101-3">
+<link rel="stylesheet" href="../assets/style.css?v=20261101-4">
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -44,6 +44,7 @@
     <button class="tab" role="tab" id="t-gems" data-tab="gems" aria-selected="false">Камни</button>
     <button class="tab" role="tab" id="t-items" data-tab="items" aria-selected="false">Вещи</button>
     <button class="tab" role="tab" id="t-flasks" data-tab="flasks" aria-selected="false">Флаконы</button>
+    <button class="tab" role="tab" id="t-pob" data-tab="pob" aria-selected="false">PoB</button>
   </div>
   <div class="stages" id="stages" hidden aria-label="Этап">
     <button class="stage" data-stage="lvl">Лвлинг</button>
@@ -100,6 +101,7 @@
 <p>Связки камней, вещи и флаконы на каждый этап лежат на вкладках <button class="go" data-go="gems:lvl">Камни</button>, <button class="go" data-go="items:lvl">Вещи</button> и <button class="go" data-go="flasks:lvl">Флаконы</button>. Этап переключается кнопками сверху: Лвлинг, Начало карт, Красные карты, Эндгейм билд.</p>
 
 <h2 id="leveling">Лвлинг</h2>
+<div class="pob" data-pob="lvl"></div>
 <p>На актах Ядовитая смесь очень сильная, проблем с боссами не будет. Задача лвлинга: как можно быстрее пройти акты. Связки камней на каждый момент: <button class="go" data-go="gems:lvl">Камни → Лвлинг</button>.</p>
 <h3>Класс</h3>
 <p>Охотница (Ranger). Из неё потом делается Следопыт, а ещё у неё есть Импульс (Momentum), он нужен для передвижения всех актов.</p>
@@ -181,6 +183,7 @@
 <div class="shots"><figure class="shot"><button type="button" aria-label="Открыть: Возмездие природы"><img src="img/asc1.webp" alt="Возмездие природы" loading="lazy"></button><figcaption>Возмездие природы</figcaption></figure><figure class="shot"><button type="button" aria-label="Открыть: Природный адреналин"><img src="img/asc2.webp" alt="Природный адреналин" loading="lazy"></button><figcaption>Природный адреналин</figcaption></figure><figure class="shot"><button type="button" aria-label="Открыть: Мастер по токсинам"><img src="img/asc3.webp" alt="Мастер по токсинам" loading="lazy"></button><figcaption>Мастер по токсинам</figcaption></figure><figure class="shot"><button type="button" aria-label="Открыть: Дар природы"><img src="img/asc4.webp" alt="Дар природы" loading="lazy"></button><figcaption>Дар природы</figcaption></figure></div>
 
 <h2 id="maps">Выход на карты</h2>
+<div class="pob" data-pob="maps"></div>
 <h3>Два обязательных условия</h3>
 <ol>
 <li>Закрыть все резисты. Недостающие резы можно докрафтить в станке, если на вещах есть свободные суффиксы.</li>
@@ -195,6 +198,7 @@
 </ul>
 <div class="shots"><figure class="shot"><button type="button" aria-label="Открыть: Пантеон"><img src="img/pantheon.webp" alt="Пантеон" loading="lazy"></button><figcaption>Пантеон</figcaption></figure></div>
 <h2 id="starter">Стартовый сетап</h2>
+<div class="pob" data-pob="maps"></div>
 <p>Если на актах набралась валюта, на выходе в карты стоит собрать три дешёвых уника. Всё вместе стоит 20-30 хаосов и даёт 20 000+ брони под гранитным флаконом.</p>
 <ul>
 <li><span class="u">Табула Раса</span> <span class="en">(Tabula Rasa)</span></li>
@@ -231,6 +235,7 @@
 <p>Щит с кольцом защищают вплоть до красных карт, а урона хватает даже в 4-линке.</p>
 
 <h2 id="upgrades">Вторые грейды</h2>
+<div class="pob" data-pob="def,glass"></div>
 <p>Порядок покупок после выхода на карты. Связки камней на этот этап: <button class="go" data-go="gems:maps">Камни → Начало карт</button>. Вещи по слотам: <button class="go" data-go="items:red">Вещи → Красные карты</button>.</p>
 <p>Камни можно увидеть в <button class="go" data-go="gems:maps">разделе камней</button>.</p>
 <div class="ins" data-k="items" data-s="red" data-ids=""></div>
@@ -261,6 +266,7 @@
 <p>В 5-линке билд бегает т16 карты, убивает гвардов Шейпера, Шейпера и Убер Элдера (с несколькими смертями). Квестовые боссы проходятся легко.</p>
 
 <h2 id="red">Красные карты</h2>
+<div class="pob" data-pob="def,glass"></div>
 <p>Связки камней на этот этап: <button class="go" data-go="gems:red">Камни → Красные карты</button>.</p>
 <p>Камни можно увидеть в <button class="go" data-go="gems:red">разделе камней</button>.</p>
 <h3>6-линк Дендрогнев</h3>
@@ -278,6 +284,7 @@
 <p>Билд не подходит для фарма Легиона и Бричей.</p>
 
 <h2 id="sting">Укол предательства</h2>
+<div class="pob" data-pob="def,glass"></div>
 <h3>Что даёт</h3>
 <p>Укол предательства (Betrayal's Sting) даёт шанс при отравлении наложить ещё один яд. Для пойзон билдов это прямой мор урон: сколько процентов на кольце, столько процентов урона. Базово до 40%, с Ядовитыми катализаторами до 48%. Билд бьёт одну цель много раз, поэтому шанс срабатывает постоянно.</p>
 <div class="shots"><figure class="shot"><button type="button" aria-label="Открыть: Укол предательства 48%"><img src="img/sting.webp" alt="Укол предательства 48%" loading="lazy"></button><figcaption>Укол предательства 48%</figcaption></figure><figure class="shot"><button type="button" aria-label="Открыть: Ядовитый катализатор"><img src="img/catalyst.webp" alt="Ядовитый катализатор" loading="lazy"></button><figcaption>Ядовитый катализатор</figcaption></figure></div>
@@ -298,6 +305,7 @@
 </ul>
 
 <h2 id="endgame">Эндгейм версия</h2>
+<div class="pob" data-pob="end"></div>
 <p>Стоит до 20-30 диванов. Убивает уберов (Убер Шейпер с первого портала, вся убер цепочка Игона) и бегает карты кошмаров даже с неприятными модами. Ваншоты иногда прилетают.</p>
 <p>Связки камней: <button class="go" data-go="gems:end">Камни → Эндгейм</button>. Вещи по слотам: <button class="go" data-go="items:end">Вещи → Эндгейм</button>. Флаконы: <button class="go" data-go="flasks:end">Флаконы → Эндгейм</button>.</p>
 <p>Камни можно увидеть в <button class="go" data-go="gems:end">разделе камней</button>.</p>
@@ -388,14 +396,15 @@
 <section class="wrap panel" id="p-gems" role="tabpanel" aria-labelledby="t-gems" hidden></section>
 <section class="wrap panel" id="p-items" role="tabpanel" aria-labelledby="t-items" hidden></section>
 <section class="wrap panel" id="p-flasks" role="tabpanel" aria-labelledby="t-flasks" hidden></section>
+<section class="wrap panel" id="p-pob" role="tabpanel" aria-labelledby="t-pob" hidden></section>
 </main>
 
 <footer><div class="wrap"><span>Nextezy · гайды по Path of Exile</span><span>Описания в мини-вики сверены с poedb.tw</span></div></footer>
 
 <div class="pop" id="pop" hidden role="tooltip"></div>
 <div class="lb" id="lb" hidden><img id="lbimg" alt=""><p id="lbcap"></p></div>
-<script src="data.js?v=20261101-3"></script>
-<script src="../assets/wiki.js?v=20261101-3"></script>
-<script src="../assets/app.js?v=20261101-3"></script>
+<script src="data.js?v=20261101-4"></script>
+<script src="../assets/wiki.js?v=20261101-4"></script>
+<script src="../assets/app.js?v=20261101-4"></script>
 </body>
 </html>

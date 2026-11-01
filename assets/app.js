@@ -1,6 +1,6 @@
 /* ===== Логика страницы ===== */
 (function(){
-  var TABS=["guide","gems","items","flasks"], ST=["lvl","maps","red","end"];
+  var TABS=["guide","gems","items","flasks","pob"], ST=["lvl","maps","red","end"];
   var TABNAME={gems:"Камни",items:"Вещи",flasks:"Флаконы"};
   function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
   function shot(k,cap,wide){ if(!IMG[k]) return ""; return '<figure class="shot'+(wide?' wide':'')+'"><button type="button" aria-label="Открыть: '+esc(cap)+'"><img src="'+IMG[k]+'" alt="'+esc(cap)+'" loading="lazy"></button><figcaption>'+esc(cap)+'</figcaption></figure>'; }
@@ -74,6 +74,27 @@
     '<div class="basics"><div class="card" data-scope><h4><span>Главное правило</span></h4><p style="margin:0">'+esc(FLASK_CRAFT.rule)+'</p></div>'+craftCard(true)+'</div>'
     + ST.map(function(s){ return stageWrap(s,'<h2>Флаконы: '+STAGES[s].toLowerCase()+'</h2><p class="note" data-scope>'+esc(FLASKS[s].note)+'</p><div class="grid">'+FLASKS[s].sets.map(function(f){return flaskSet(f,true)}).join("")+'</div>'); }).join("");
 
+  /* --- PoB: плашки в начале глав и отдельная вкладка --- */
+  var POBL=(typeof POBS!=="undefined")?POBS:[], PB={}; POBL.forEach(function(p){PB[p.id]=p});
+  function pobBtn(p){ return '<a class="pob-btn" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+' <span aria-hidden="true">→</span></a>'; }
+  document.querySelectorAll(".pob[data-pob]").forEach(function(el){
+    var list=el.dataset.pob.split(",").map(function(id){return PB[id]}).filter(Boolean); if(!list.length){el.remove();return;}
+    var pair=list.length>1&&list[0].pair;
+    el.innerHTML='<div class="pob-lbl">PoB этого этапа</div><div class="pob-btns">'+list.map(pobBtn).join("")+'</div>'+(pair?'<p class="pob-note">'+esc(POB_PAIR_NOTE)+'</p>':'');
+  });
+  (function(){
+    var host=document.getElementById("p-pob"); if(!host) return;
+    function card(p){ return '<div class="card pob-card"><h4><span>'+esc(p.title)+'</span></h4><p style="margin:0">'+esc(p.desc)+'</p><a class="buy" href="'+esc(p.url)+'" target="_blank" rel="noopener">Открыть в PoB →</a></div>'; }
+    var h='<h2>PoB билда</h2><p class="note">Ссылки на Path of Building для каждого этапа. Открываются на pobb.in, оттуда можно скопировать код в свой PoB.</p><div class="pob-list">', done={};
+    POBL.forEach(function(p){
+      if(done[p.id]) return;
+      if(p.pair){ var g=POBL.filter(function(q){return q.pair===p.pair}); g.forEach(function(q){done[q.id]=1});
+        h+='<div class="pob-pair"><div class="pob-pair-grid">'+g.map(card).join("")+'</div><p class="pob-note">'+esc(POB_PAIR_NOTE)+'</p></div>';
+      } else { done[p.id]=1; h+=card(p); }
+    });
+    host.innerHTML=h+'</div>';
+  })();
+
   /* --- картинки в тексте гайда уже вставлены сборкой; делим гайд на главы --- */
   var art=document.getElementById("guidetext"), kids=[].slice.call(art.childNodes), sec=null;
   kids.forEach(function(n){ if(n.nodeType===1&&n.tagName==="H2"){ sec=document.createElement("section"); sec.setAttribute("data-scope",""); art.insertBefore(sec,n); } if(sec) sec.appendChild(n); });
@@ -133,12 +154,12 @@
   try{var sv=localStorage.getItem("pconc-stage"); if(ST.indexOf(sv)>=0) state.stage=sv;}catch(e){}
   function render(jump){
     TABS.forEach(function(t){ document.getElementById("p-"+t).hidden=t!==state.tab; document.getElementById("t-"+t).setAttribute("aria-selected",t===state.tab); });
-    bar.hidden=state.tab==="guide";
+    bar.hidden=state.tab==="guide"||state.tab==="pob";
     document.querySelectorAll(".stage").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.stage===state.stage)});
     document.querySelectorAll(".panel [data-stage]").forEach(function(el){el.hidden=el.dataset.stage!==state.stage});
     if(jump){ var y=document.querySelector(".tabsbar").offsetTop; if(window.scrollY>y) window.scrollTo(0,y); }
   }
-  function setHash(){ var h=state.tab==="guide"?"guide":state.tab+"-"+state.stage; if(location.hash.slice(1)!==h){ try{history.replaceState(null,"","#"+h)}catch(e){} } }
+  function setHash(){ var h=(state.tab==="guide"||state.tab==="pob")?state.tab:state.tab+"-"+state.stage; if(location.hash.slice(1)!==h){ try{history.replaceState(null,"","#"+h)}catch(e){} } }
   function fromHash(){ var h=location.hash.slice(1); if(!h) return; var p=h.split("-"); if(TABS.indexOf(p[0])>=0){ state.tab=p[0]; if(ST.indexOf(p[1])>=0) state.stage=p[1]; } else if(document.getElementById(h)) state.tab="guide"; }
   function go(tab,stage){ state.tab=tab; if(stage) state.stage=stage; try{localStorage.setItem("pconc-stage",state.stage)}catch(e){} render(true); setHash(); }
   document.querySelectorAll(".tab").forEach(function(b){b.addEventListener("click",function(){go(b.dataset.tab)})});
