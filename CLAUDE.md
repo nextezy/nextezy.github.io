@@ -82,6 +82,8 @@ git -c user.name="$(git log -1 --format=%an)" -c user.email="$(git log -1 --form
 git fetch origin main && git push origin main
 ```
 
+При каждой правке `style.css`, `app.js`, `wiki.js` или `data.js` поднять номер версии `?v=ГГГГММДД-N` в ссылках на эти файлы в `index.html` и `pconc/index.html`, иначе браузеры и кеш GitHub Pages до 10 минут показывают старую версию.
+
 Перед пушем проверить скрипты на синтаксис (`node --check`) и открыть страницу в браузере (можно `python3 -m http.server` в папке и headless Chrome). Важно: на настоящем сайте нет служебных стилей claude.ai, поэтому правило `[hidden]{display:none!important}` в начале `style.css` обязательно, без него лайтбокс перекрывает страницу.
 
 ## Статистика
