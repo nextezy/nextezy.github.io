@@ -52,6 +52,10 @@ assets/
 
 Слева в шапке надпись `Nextezy` (`<span class="logo">` внутри `.brand`): Archivo ширина 125%, вес 900, курсив, лёгкий поворот и фиолетовая тень, максимально похоже на анимацию лого канала. Без значка и без слова «гайды» (решение Никиты). Шрифт обрезан только до букв слова Nextezy: если в лого понадобятся другие буквы, пересобрать `nextezy-logo.woff2`.
 
+## Ссылка на видео
+
+В шапке гайда под строкой описания кнопка на видео: `<a class="video" href="…" target="_blank" rel="noopener"><img src="../assets/youtube-logo.webp" …><span><b>Смотреть видео-гайд на YouTube</b><small>Название видео</small></span></a>`. В `h1` пишем название билда, а в строке под ним (`.lead`) короткое описание (решение Никиты).
+
 ## Соцсети
 
 В шапке справа иконки-ссылки (`<nav class="soc">`): YouTube https://www.youtube.com/@Nextezy/videos, Telegram https://t.me/nextezy1, Twitch https://www.twitch.tv/nextezy1.
