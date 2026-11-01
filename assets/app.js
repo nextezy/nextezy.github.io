@@ -1,6 +1,7 @@
 /* ===== Логика страницы ===== */
 (function(){
-  var TABS=["guide","gems","items","flasks","pob"], ST=["lvl","maps","red","end"];
+  var TABS=["guide","gems","items","flasks","pob"], ST=Object.keys(STAGES);
+  var SLUG=location.pathname.split("/").filter(Boolean)[0]||"guide", SKEY=SLUG+"-stage";
   var TABNAME={gems:"Камни",items:"Вещи",flasks:"Флаконы"};
   function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
   function shot(k,cap,wide){ if(!IMG[k]) return ""; return '<figure class="shot'+(wide?' wide':'')+'"><button type="button" aria-label="Открыть: '+esc(cap)+'"><img src="'+IMG[k]+'" alt="'+esc(cap)+'" loading="lazy"></button><figcaption>'+esc(cap)+'</figcaption></figure>'; }
@@ -60,7 +61,7 @@
   });
 
   /* --- вкладки Камни / Вещи / Флаконы --- */
-  function stageWrap(s,inner){ return '<div data-stage="'+s+'"'+(s==="lvl"?'':' hidden')+'>'+inner+'</div>'; }
+  function stageWrap(s,inner){ return '<div data-stage="'+s+'"'+(s===ST[0]?'':' hidden')+'>'+inner+'</div>'; }
   document.getElementById("p-gems").innerHTML = ST.map(function(s){
     var h='<h2>Камни: '+STAGES[s].toLowerCase()+'</h2>'+(GEMS[s].note?'<p class="note" data-scope>'+esc(GEMS[s].note)+'</p>':'<div style="height:14px"></div>');
     var subs=[], bySub={}; GEMS[s].groups.forEach(function(g){var k=g.sub||""; if(!bySub[k]){bySub[k]=[];subs.push(k)} bySub[k].push(g)});
@@ -71,7 +72,7 @@
     return stageWrap(s,'<h2>Вещи: '+STAGES[s].toLowerCase()+'</h2><p class="note" data-scope>'+esc(ITEMS[s].note)+'</p><div class="grid">'+ITEMS[s].slots.map(slotCard).join("")+'</div>');
   }).join("");
   document.getElementById("p-flasks").innerHTML =
-    '<div class="basics"><div class="card" data-scope><h4><span>Главное правило</span></h4><p style="margin:0">'+esc(FLASK_CRAFT.rule)+'</p></div>'+craftCard(true)+'</div>'
+    (typeof FLASK_CRAFT!=="undefined"?'<div class="basics"><div class="card" data-scope><h4><span>Главное правило</span></h4><p style="margin:0">'+esc(FLASK_CRAFT.rule)+'</p></div>'+craftCard(true)+'</div>':'')
     + ST.map(function(s){ return stageWrap(s,'<h2>Флаконы: '+STAGES[s].toLowerCase()+'</h2><p class="note" data-scope>'+esc(FLASKS[s].note)+'</p><div class="grid">'+FLASKS[s].sets.map(function(f){return flaskSet(f,true)}).join("")+'</div>'); }).join("");
 
   /* --- PoB: плашки в начале глав и отдельная вкладка --- */
@@ -101,7 +102,7 @@
 
   /* --- мини-вики: подсвечиваем первое упоминание термина в каждой главе / карточке --- */
   var W={}, RX=[];
-  WIKI.forEach(function(e){ W[e.id]=e; e.m.forEach(function(src){ try{ RX.push({id:e.id, re:new RegExp(src,e.cs?"u":"iu")}); }catch(err){} }); });
+  WIKI.forEach(function(e){ if(e.pg&&e.pg.indexOf(SLUG)<0) return; W[e.id]=e; e.m.forEach(function(src){ try{ RX.push({id:e.id, re:new RegExp(src,e.cs?"u":"iu")}); }catch(err){} }); });
   var SKIP="A,BUTTON,H2,H3,H4,TH,FIGCAPTION,.w,.lv,.copy,.tag,.sl,.ins-head,.sub";
   function textNodes(root){
     var out=[], tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
@@ -150,8 +151,8 @@
   window.addEventListener("scroll",function(){ if(!pop.hidden) hidePop(); },{passive:true});
 
   /* --- вкладки, этапы, адрес --- */
-  var state={tab:"guide",stage:"lvl"}, bar=document.getElementById("stages");
-  try{var sv=localStorage.getItem("pconc-stage"); if(ST.indexOf(sv)>=0) state.stage=sv;}catch(e){}
+  var state={tab:"guide",stage:ST[0]}, bar=document.getElementById("stages");
+  try{var sv=localStorage.getItem(SKEY); if(ST.indexOf(sv)>=0) state.stage=sv;}catch(e){}
   function render(jump){
     TABS.forEach(function(t){ document.getElementById("p-"+t).hidden=t!==state.tab; document.getElementById("t-"+t).setAttribute("aria-selected",t===state.tab); });
     bar.hidden=state.tab==="guide"||state.tab==="pob";
@@ -161,7 +162,7 @@
   }
   function setHash(){ var h=(state.tab==="guide"||state.tab==="pob")?state.tab:state.tab+"-"+state.stage; if(location.hash.slice(1)!==h){ try{history.replaceState(null,"","#"+h)}catch(e){} } }
   function fromHash(){ var h=location.hash.slice(1); if(!h) return; var p=h.split("-"); if(TABS.indexOf(p[0])>=0){ state.tab=p[0]; if(ST.indexOf(p[1])>=0) state.stage=p[1]; } else if(document.getElementById(h)) state.tab="guide"; }
-  function go(tab,stage){ state.tab=tab; if(stage) state.stage=stage; try{localStorage.setItem("pconc-stage",state.stage)}catch(e){} render(true); setHash(); }
+  function go(tab,stage){ state.tab=tab; if(stage) state.stage=stage; try{localStorage.setItem(SKEY,state.stage)}catch(e){} render(true); setHash(); }
   document.querySelectorAll(".tab").forEach(function(b){b.addEventListener("click",function(){go(b.dataset.tab)})});
   document.querySelectorAll(".stage").forEach(function(b){b.addEventListener("click",function(){go(state.tab,b.dataset.stage)})});
 
