@@ -210,3 +210,9 @@ footer .wrap{padding-block:26px;display:flex;justify-content:space-between;gap:1
   linear-gradient(180deg, rgba(11,11,16,0) 55%, var(--bg) 100%)}
 @media (max-width:640px){.hero-bg::after{background:linear-gradient(180deg, rgba(11,11,16,.80) 0%, rgba(11,11,16,.88) 70%, var(--bg) 100%)}}
 .hero .wrap{position:relative}
+
+/* Соцсети в шапке */
+.soc{display:flex;align-items:center;gap:8px}
+.soc a{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line2);background:var(--s1);transition:border-color .15s,background .15s}
+.soc a:hover{border-color:var(--accent);background:var(--s2)}
+.soc img{display:block;object-fit:contain}
