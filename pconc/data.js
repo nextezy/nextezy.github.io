@@ -93,22 +93,22 @@ var GEMS = {
   maps: {
     note: "Сетап на лоу тир карты, ещё на обычной Ядовитой смеси.",
     groups: [
-      {id:"maps-dmg", title:"Урон", gems:["Ядовитая смесь (Poisonous Concoction)","Большой залп (Greater Volley)|16 лвл","Много дополнительных снарядов (Greater Multiple Projectiles)|16 лвл","Безграничные состояния (Unbound Ailments)","Яростные снаряды (Vicious Projectiles)","Манипуляция пустотой (Void Manipulation)|17 лвл"]},
-      {id:"maps-move", title:"Передвижение", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)"]},
-      {id:"maps-aura", title:"Ауры и вестник", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
-      {id:"maps-def", title:"Защита", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
-      {id:"maps-arr", title:"Аура под Заносчивостью", gems:["Точность (Precision)","Заносчивость (Arrogance)"]},
-      {id:"maps-curse", title:"Проклятие", gems:["Отчаяние (Despair)"]}
+      {id:"maps-dmg", title:"Основная связка камней", gems:["Ядовитая смесь (Poisonous Concoction)","Большой залп (Greater Volley)|16 лвл","Много дополнительных снарядов (Greater Multiple Projectiles)|16 лвл","Безграничные состояния (Unbound Ailments)","Яростные снаряды (Vicious Projectiles)","Манипуляция пустотой (Void Manipulation)|17 лвл"]},
+      {id:"maps-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)"]},
+      {id:"maps-aura", title:"Шлем", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
+      {id:"maps-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
+      {id:"maps-arr", title:"Перчатки", gems:["Точность (Precision)","Заносчивость (Arrogance)"]},
+      {id:"maps-curse", title:"В кольце, если будет", gems:["Отчаяние (Despair)"]}
     ]
   },
   red: {
     note: "На этом этапе появляется 6-линк Дендрогнев, и в основную связку добавляется Greater Chain (+50% мор к количеству цепей).",
     groups: [
-      {id:"red-dmg", title:"Урон", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Манипуляция пустотой (Void Manipulation)","Большая цепь (Greater Chain)|1 лвл"]},
-      {id:"red-move", title:"Передвижение", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)|19 лвл"]},
-      {id:"red-aura", title:"Ауры и вестник", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
-      {id:"red-def", title:"Защита", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
-      {id:"red-arr", title:"Аура под Заносчивостью", gems:["Точность (Precision)","Заносчивость (Arrogance)"]}
+      {id:"red-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Манипуляция пустотой (Void Manipulation)","Большая цепь (Greater Chain)|1 лвл"]},
+      {id:"red-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)|19 лвл"]},
+      {id:"red-aura", title:"Шлем", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
+      {id:"red-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
+      {id:"red-arr", title:"Перчатки", gems:["Точность (Precision)","Заносчивость (Arrogance)"]}
     ]
   },
   end: {
