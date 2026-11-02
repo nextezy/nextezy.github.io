@@ -153,6 +153,10 @@ git fetch origin main && git push origin main
 
 В `<head>` каждой страницы: og:title, og:description, og:type, og:url, og:site_name, og:locale, og:image (+ width/height), twitter:card, canonical. Адреса абсолютные (`https://nextezy.com/...`). Картинка гайда: `<гайд>/img/og.jpg` (JPG-копия превью видео 1280×720, сделать при новом гайде). У главной и политики `assets/og.jpg` (1200×630: лого и превью гайдов; при новом гайде можно пересобрать). Telegram кеширует превью: обновить через бота @WebpageBot.
 
+## Поиск Google
+
+`sitemap.xml` и `robots.txt` в корне. При новом гайде добавить его адрес в `sitemap.xml` (и обновлять `lastmod` при больших правках). Сайт добавлен в Google Search Console как ресурс домена (подтверждение записью TXT `google-site-verification=…` в Porkbun, её не удалять).
+
 ## Статистика
 
 Google Analytics 4, идентификатор `G-XQY86457FN`. Код тега стоит в начале `<head>` на каждой странице (главная и гайд). У новых страниц добавлять его так же.
