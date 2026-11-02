@@ -203,7 +203,28 @@
   heads.forEach(function(h){ var li=document.createElement("li"), a=document.createElement("a"); a.href="#"+h.id; a.textContent=h.textContent; li.appendChild(a); toc.appendChild(li); });
   var links=[].slice.call(toc.querySelectorAll("a"));
   var hlCur=null, hlTick=false;
-  function hl(){ hlTick=false; if(!heads.length) return; var c=heads[0]; for(var i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<160) c=heads[i]; else break; } if(c===hlCur) return; hlCur=c; links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
+  function hl(){ hlTick=false; if(!heads.length) return; var c=heads[0], i;
+    for(i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<160) c=heads[i]; else break; }
+    /* в самом низу страницы короткий последний раздел (Итог) не может доехать до верха: берём последний видимый заголовок */
+    var de=document.documentElement;
+    if(window.innerHeight+window.scrollY>=de.scrollHeight-4){ for(i=heads.length-1;i>=0;i--){ var t=heads[i].getBoundingClientRect().top; if(t>=0&&t<window.innerHeight*0.7){ c=heads[i]; break; } } }
+    if(c===hlCur) return; hlCur=c; links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
+  /* переход по оглавлению: далёкий прыжок мгновенно до экрана перед разделом, остаток плавно, потом поправка,
+     если над разделом догрузились картинки и он сдвинулся */
+  var goSeq=0; ["wheel","touchstart","keydown","mousedown"].forEach(function(n){ window.addEventListener(n,function(){ goSeq++; },{passive:true}); });
+  function goHead(h){
+    var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function target(){ return Math.max(0,Math.min(h.getBoundingClientRect().top+window.scrollY-100, document.documentElement.scrollHeight-window.innerHeight)); }
+    var y=target(), far=window.innerHeight*1.5;
+    try{
+      if(Math.abs(window.scrollY-y)>far) window.scrollTo({top:y+(window.scrollY>y?far*0.5:-far*0.5),behavior:"instant"});
+      window.scrollTo({top:target(),behavior:rm?"auto":"smooth"});
+    }catch(e){ window.scrollTo(0,target()); }
+    var my=++goSeq; /* поправку отменяем, если человек сам начал крутить */
+    [700,1500].forEach(function(ms){ setTimeout(function(){ if(my!==goSeq) return; var t=target(); if(Math.abs(window.scrollY-t)>30) try{window.scrollTo({top:t,behavior:"instant"})}catch(e){window.scrollTo(0,t)} },ms); });
+    try{history.replaceState(null,"","#"+h.id)}catch(e){}
+  }
+  links.forEach(function(a,i){ a.addEventListener("click",function(ev){ if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.button) return; ev.preventDefault(); goHead(heads[i]); }); });
   window.addEventListener("scroll",function(){ if(!hlTick){ hlTick=true; requestAnimationFrame(hl); } },{passive:true}); hl();
 
 
