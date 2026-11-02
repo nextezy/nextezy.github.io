@@ -57,6 +57,8 @@ assets/
 
 В шапке гайда под строкой описания кнопка на видео: `<a class="video" href="…" target="_blank" rel="noopener"><img src="../assets/youtube-logo.webp" …><span><b>Смотреть видео-гайд на YouTube</b><small>Название видео</small></span></a>`. В `h1` пишем название билда, а в строке под ним (`.lead`) короткое описание (решение Никиты).
 
+Превью видео: справа от названия кликабельная обложка `<a class="thumb" href="видео">…<img src="img/preview.webp">…<span class="play">` сразу после кнопки `.video`, а у `.wrap` в шапке класс `has-thumb`. Кнопку `.video` оставляем тоже (решение Никиты). Это же превью (16:9) стоит в карточке гайда на главной.
+
 ## Соцсети
 
 В шапке справа иконки-ссылки (`<nav class="soc">`): YouTube https://www.youtube.com/@Nextezy/videos, Telegram https://t.me/nextezy1, Twitch https://www.twitch.tv/nextezy1.
