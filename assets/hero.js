@@ -1,11 +1,13 @@
 /* Фон шапки: анимация лого Nextezy.
    Видео начинает грузиться только после полной загрузки страницы,
    не грузится при экономии трафика и при отключённой в системе анимации (тогда остаётся неподвижный кадр).
-   Кнопка в углу шапки выключает и включает анимацию; выбор запоминается в браузере (nx-anim = off). */
+   На слабых ПК (браузер сообщает 4 ядра или меньше, или 4 ГБ памяти и меньше) сама не включается.
+   Кнопка в углу шапки выключает и включает анимацию; выбор запоминается в браузере (nx-anim = off / on). */
 (function(){
   var KEY="nx-anim", v=null, vis=true, btn=null;
-  function getOff(){ try{ return localStorage.getItem(KEY)==="off"; }catch(e){ return false; } }
-  function setOff(off){ try{ if(off) localStorage.setItem(KEY,"off"); else localStorage.removeItem(KEY); }catch(e){} }
+  function getPref(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function setOff(off){ try{ localStorage.setItem(KEY,off?"off":"on"); }catch(e){} }
+  function weak(){ var n=navigator.hardwareConcurrency, m=navigator.deviceMemory; return (n&&n<=4)||(m&&m<=4); }
   var I_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>';
   var I_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.2-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>';
   function setBtn(on){
@@ -35,7 +37,8 @@
     btn=document.createElement("button"); btn.type="button"; btn.className="anim-btn";
     hero.appendChild(btn);
     var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
-    var auto=!getOff()
+    var pref=getPref();
+    var auto=pref!=="off" && (pref==="on"||!weak())
       && !(c&&(c.saveData||/(^|-)2g$/.test(c.effectiveType||"")))
       && !(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     setBtn(auto);
