@@ -291,3 +291,12 @@ figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .brand-pic{height:64px;width:auto;display:block;margin:-6px 0 -16px;transform:translateY(1px);filter:drop-shadow(0 0 7px rgba(139,92,246,.5))}
 .brand:has(.brand-pic){gap:6px;align-items:flex-end}
 @media (max-width:640px){.brand-pic{display:none}.brand:has(.brand-pic){align-items:center}}
+/* вкладки гайда на телефоне: «Основы» вместо «Основы билда», отступы меньше, чтобы все 5 влезали */
+.tab-short{display:none}
+@media (max-width:640px){
+  .tab-long{display:none}.tab-short{display:inline}
+  .tabs{gap:0;margin-inline:-8px}
+  .tab{font-size:17px;padding:16px 8px 14px}
+}
+@media (max-width:380px){.tab{font-size:16px;padding-inline:7px}}
+@media (max-width:340px){.tab{font-size:15px;padding-inline:5px}}
