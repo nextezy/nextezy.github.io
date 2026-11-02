@@ -76,6 +76,7 @@ assets/
 - Вкладки Камни/Вещи/Флаконы рисуются из `data.js`, руками в HTML их не писать.
 - Карточки внутри текста: `<div class="ins" data-k="gems|items|flasks|craft" data-s="lvl" data-ids="id1,id2"></div>`. `data-ids` выбирает группы камней или наборы флаконов по `id` из `data.js`; для вещей не нужен. Данные общие с вкладками: правишь `data.js`, меняется везде.
 - Картинка в тексте: `<figure class="shot"><button type="button" aria-label="Открыть: Подпись"><img src="img/key.webp" alt="Подпись" loading="lazy"></button><figcaption>Подпись</figcaption></figure>` внутри `<div class="shots">`. Широкая: класс `shot wide`.
+- Картинка со всплывающими поинтами (восхождения): `<figure class="hsfig" data-hs="ключ"><div class="hsbox"><img src="img/….webp" width=… height=…></div><figcaption>…</figcaption></figure>` внутри `.shots`. Поинты в `HOTSPOTS` в `data.js`: `{ключ:{w,h,pts:[{x,y,r,n?,on?,k,t,en,d,p}]}}` (x,y,r в пикселях исходной картинки, `n` номер лабы, `d` с переносами строк). Окошко то же, что у мини-вики. Координаты поинтов восхождения брать из официальных данных дерева (github grindinggear/skilltree-export, data.json), тексты с poedb.
 - Кнопка «Наверх» (`.totop`, справа внизу) создаётся в `app.js`, появляется после прокрутки на один экран и плавно поднимает в самый верх страницы (решение Никиты). В HTML её не писать.
 - Ссылка на вкладку: `<button class="go" data-go="gems:lvl">Камни → Лвлинг</button>`. Ссылка на главу из карточки: `data-goto="id_главы"`.
 

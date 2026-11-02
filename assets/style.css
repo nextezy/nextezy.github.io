@@ -179,7 +179,7 @@ figure.shot figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .pop .k{font-size:13px;font-weight:600;color:var(--accent-3);text-transform:uppercase;letter-spacing:.05em}
 .pop h5{margin:4px 0 2px;font-size:20px;font-weight:700;color:var(--fg)}
 .pop .pen{color:var(--dim);font-size:15px;margin-bottom:8px}
-.pop p{margin:0}
+.pop p{margin:0;white-space:pre-line}
 .pop img{display:block;max-width:100%;max-height:220px;margin-top:12px;border-radius:8px;border:1px solid var(--line)}
 .pop a{display:inline-block;margin-top:10px;font-size:15px;font-weight:500}
 
@@ -270,3 +270,13 @@ footer .wrap{position:relative}
 .sx.on.talk .sx-say{opacity:1;transform:none}
 @media (max-width:600px){.sx{width:180px}.sx-clip{height:118px}.sx-say{font-size:15px;right:45%}}
 @media (prefers-reduced-motion:reduce){.sx-btn,.sx-say{transition:none}}
+
+/* картинка с всплывающими поинтами (восхождения) */
+figure.hsfig{margin:0;flex-basis:100%;max-width:720px}
+.hsbox{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+.hsbox img{display:block;width:100%;height:auto}
+.hs.w{position:absolute;aspect-ratio:1;transform:translate(-50%,-50%);border:2px solid transparent;border-radius:50%;background:none;padding:0;cursor:pointer;transition:border-color .15s ease,box-shadow .15s ease}
+.hs.w:hover,.hs.w:focus-visible{border:2px solid var(--accent);box-shadow:0 0 0 3px var(--accent-soft),0 0 18px var(--accent);outline:none}
+.hsn{position:absolute;right:-8%;top:-8%;min-width:28px;height:28px;padding:0 6px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;line-height:28px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.6);pointer-events:none}
+@media (max-width:640px){.hsn{min-width:22px;height:22px;line-height:22px;font-size:13px;padding:0 4px}}
+figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}

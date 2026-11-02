@@ -103,6 +103,19 @@
   /* --- мини-вики: подсвечиваем первое упоминание термина в каждой главе / карточке --- */
   var W={}, RX=[];
   WIKI.forEach(function(e){ if(e.pg&&e.pg.indexOf(SLUG)<0) return; W[e.id]=e; e.m.forEach(function(src){ try{ RX.push({id:e.id, re:new RegExp(src,e.cs?"u":"iu")}); }catch(err){} }); });
+
+  /* --- картинки с всплывающими поинтами (HOTSPOTS в data.js) --- */
+  var HS=typeof HOTSPOTS!=="undefined"?HOTSPOTS:{};
+  document.querySelectorAll("[data-hs]").forEach(function(fig){
+    var h=HS[fig.dataset.hs], box=fig.querySelector(".hsbox"); if(!h||!box) return;
+    h.pts.forEach(function(p,i){
+      var id="hs-"+fig.dataset.hs+"-"+i; W[id]={k:p.k,t:p.t,en:p.en,d:p.d,p:p.p||""};
+      var b=document.createElement("button"); b.type="button"; b.className="w hs"+(p.on?" on":""); b.dataset.w=id; b.setAttribute("aria-label",p.t);
+      b.style.left=(p.x/h.w*100)+"%"; b.style.top=(p.y/h.h*100)+"%"; b.style.width=(p.r*2/h.w*100)+"%";
+      if(p.n){ var n=document.createElement("span"); n.className="hsn"; n.textContent=p.n; b.appendChild(n); }
+      box.appendChild(b);
+    });
+  });
   var SKIP="A,BUTTON,H2,H3,H4,TH,FIGCAPTION,.w,.lv,.copy,.tag,.sl,.ins-head,.sub";
   function textNodes(root){
     var out=[], tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
