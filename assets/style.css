@@ -150,9 +150,6 @@ figure.shot figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .links li:last-child{border-bottom:0}
 .links .en{font-size:15px}
 .lv{font-size:14px;font-weight:600;color:var(--accent-3);background:var(--accent-soft);padding:2px 8px;border-radius:6px;white-space:nowrap}
-.copy{appearance:none;border:1px solid var(--line2);background:none;color:var(--muted);font-size:14px;font-weight:500;padding:5px 10px;border-radius:7px;cursor:pointer;white-space:nowrap}
-.copy:hover{color:var(--fg);border-color:var(--accent)}
-.copy.ok{color:var(--good);border-color:var(--good)}
 .req{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .req li{padding-left:22px;position:relative}
 .req li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent-2)}

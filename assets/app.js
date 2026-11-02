@@ -14,7 +14,7 @@
     return '<li data-copy="'+esc(p[0]+(lv?" "+lv:""))+'"><span><span class="g">'+esc(s.ru)+'</span> <span class="en">('+esc(s.en)+')</span></span>'+(lv?'<span class="lv">'+esc(lv)+'</span>':'')+'</li>';
   }
   function gemCard(g, full){
-    return '<div class="card" data-scope><h4><span>'+(g.sub&&!full?'<span class="sub">'+esc(g.sub)+'</span>':'')+esc(g.title)+'</span><button type="button" class="copy" title="Скопировать список, по одному камню в строке">Копировать</button></h4>'
+    return '<div class="card" data-scope><h4><span>'+(g.sub&&!full?'<span class="sub">'+esc(g.sub)+'</span>':'')+esc(g.title)+'</span></h4>'
       +'<ul class="links">'+g.gems.map(gemLi).join("")+'</ul>'
       +(g.text?'<p>'+esc(g.text)+'</p>':'')+(full?shots(g.imgs):'')+'</div>';
   }
@@ -166,14 +166,6 @@
   document.querySelectorAll(".tab").forEach(function(b){b.addEventListener("click",function(){go(b.dataset.tab)})});
   document.querySelectorAll(".stage").forEach(function(b){b.addEventListener("click",function(){go(state.tab,b.dataset.stage)})});
 
-  /* --- копирование списка камней --- */
-  function copyList(btn){
-    var text=[].slice.call(btn.closest(".card").querySelectorAll(".links li")).map(function(li){return li.dataset.copy}).join("\n");
-    function ok(){btn.textContent="Скопировано";btn.classList.add("ok");setTimeout(function(){btn.textContent="Копировать";btn.classList.remove("ok")},1600)}
-    function fb(){var ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}ta.remove()}
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok,fb); else fb();
-  }
-
   /* --- лайтбокс --- */
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg"), lbcap=document.getElementById("lbcap");
   lb.addEventListener("click",function(){lb.hidden=true});
@@ -181,7 +173,6 @@
   document.addEventListener("click",function(ev){
     var t=ev.target;
     var g=t.closest("[data-go]"); if(g){ var p=g.dataset.go.split(":"); go(p[0],p[1]); return; }
-    var c=t.closest(".copy"); if(c){ copyList(c); return; }
     var s=t.closest("figure.shot button"); if(s){ var im=s.querySelector("img"); lbimg.src=im.src; lbcap.textContent=im.alt; lb.hidden=false; return; }
     var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&!pop.hidden) hidePop(); else showPop(w); return; }
     if(!t.closest(".pop")) hidePop();
