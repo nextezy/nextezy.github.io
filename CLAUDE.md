@@ -33,7 +33,7 @@ assets/
   style.css           всё оформление + шрифт Onest (лежит в assets/fonts, без Google)
   app.js              логика: вкладки, этапы, карточки в тексте, мини-вики, лайтбокс, оглавление
   wiki.js             мини-вики (WIKI), общая для всех гайдов
-  favicon.svg
+  favicon-32.png, icon-192/512.png  иконка сайта (Секстези на фиолетовом, выбор Никиты); в корне ещё favicon.ico, apple-touch-icon.png и site.webmanifest. Ссылки на них в <head> каждой страницы (пути от корня /)
   fonts/nextezy-logo.woff2  шрифт лого (Archivo Expanded Black Italic, обрезан до букв N,e,x,t,z,y, 5 КБ)
   icon-youtube/telegram/twitch.png  иконки соцсетей в шапке
   hero.mp4, hero.webp  фон шапки (анимация лого Nextezy, 720p 24 кадра, облегчено для слабых ПК) и его первый кадр; при замене видео поднять `?v=` в data-video
