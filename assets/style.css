@@ -261,3 +261,15 @@ footer .wrap{padding-block:26px;display:flex;justify-content:space-between;gap:1
 .totop svg{width:24px;height:24px}
 @media (max-width:600px){.totop{width:46px;height:46px;right:max(14px,calc(env(safe-area-inset-right,0px) + 8px));bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.totop{transition:none}}
+/* пасхалка: уставшая Секстези над подвалом */
+footer .wrap{position:relative}
+.sx{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:100%;width:270px;pointer-events:none}
+.sx-clip{height:178px;clip-path:inset(-60px -60px 0 -60px)}
+.sx-btn{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;transform:translateY(105%);transition:transform .8s cubic-bezier(.22,.8,.25,1)}
+.sx.on .sx-btn{transform:none}
+.sx-btn img{display:block;width:100%;height:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 0 14px rgba(139,92,246,.35))}
+.sx-say{position:absolute;right:62%;bottom:calc(100% - 26px);background:var(--s3);color:var(--fg);border:1px solid var(--line2);border-radius:14px;padding:8px 14px;font-size:16px;font-weight:600;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.45);opacity:0;transform:translateY(6px);transition:opacity .2s ease,transform .2s ease}
+.sx-say::after{content:"";position:absolute;right:16px;bottom:-7px;width:12px;height:12px;background:var(--s3);border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);transform:rotate(45deg)}
+.sx.on.talk .sx-say{opacity:1;transform:none}
+@media (max-width:600px){.sx{width:180px}.sx-clip{height:118px}.sx-say{font-size:15px;right:45%}}
+@media (prefers-reduced-motion:reduce){.sx-btn,.sx-say{transition:none}}
