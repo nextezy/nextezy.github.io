@@ -47,11 +47,6 @@ button:focus-visible,a:focus-visible,.w:focus-visible{outline:2px solid var(--ac
 .hero h1{color:var(--fg);font-weight:800;font-size:clamp(36px,5.5vw,60px);line-height:1.08;letter-spacing:-.025em;margin:0 0 18px;max-width:18ch;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--accent-2)}
 .hero .lead{margin:0;max-width:60ch;color:var(--muted);font-size:20px}
-.video{display:inline-flex;align-items:center;gap:14px;margin-top:22px;padding:12px 18px 12px 14px;background:var(--s1);border:1px solid var(--line2);border-radius:12px;text-decoration:none;color:var(--fg);max-width:860px}
-.video:hover{border-color:var(--accent)}
-.video img{width:44px;height:auto;flex:none}
-.video b{display:block;font-weight:600;font-size:18px;line-height:1.3}
-.video small{display:block;color:var(--muted);font-size:15px;line-height:1.4}
 /* превью видео в шапке */
 .vid{margin-top:24px;max-width:560px;text-align:center}
 .vcap{display:inline-block;margin-top:14px;padding:8px 22px;border-radius:10px;background:var(--yt);color:#fff;font-weight:800;font-size:20px;letter-spacing:.01em;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s ease}
@@ -226,7 +221,7 @@ footer .wrap{padding-block:26px;display:flex;justify-content:space-between;gap:1
 
 /* Фон шапки гайда: анимация лого (assets/hero.mp4, кадр assets/hero.webp) */
 .hero{position:relative;overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:0;z-index:-1;background:var(--bg) center/cover no-repeat;background-image:var(--hero-poster)}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:var(--bg) center/cover no-repeat;background-image:url(hero.webp)}
 .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
 .hero-bg video.on{opacity:1}
 .hero-bg::after{content:"";position:absolute;inset:0;background:
