@@ -202,8 +202,9 @@
   var toc=document.getElementById("toc"), heads=[].slice.call(art.querySelectorAll("h2"));
   heads.forEach(function(h){ var li=document.createElement("li"), a=document.createElement("a"); a.href="#"+h.id; a.textContent=h.textContent; li.appendChild(a); toc.appendChild(li); });
   var links=[].slice.call(toc.querySelectorAll("a"));
-  function hl(){ var c=heads[0]; heads.forEach(function(h){ if(h.getBoundingClientRect().top<160) c=h; }); links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
-  window.addEventListener("scroll",hl,{passive:true}); hl();
+  var hlCur=null, hlTick=false;
+  function hl(){ hlTick=false; if(!heads.length) return; var c=heads[0]; for(var i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<160) c=heads[i]; else break; } if(c===hlCur) return; hlCur=c; links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
+  window.addEventListener("scroll",function(){ if(!hlTick){ hlTick=true; requestAnimationFrame(hl); } },{passive:true}); hl();
 
 
   /* --- кнопка «наверх» --- */
@@ -212,7 +213,12 @@
   document.body.appendChild(up);
   function upShow(){ up.classList.toggle("on", window.scrollY>window.innerHeight); }
   window.addEventListener("scroll",upShow,{passive:true}); upShow();
-  up.addEventListener("click",function(){ var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches; try{window.scrollTo({top:0,behavior:rm?"auto":"smooth"})}catch(e){window.scrollTo(0,0)} });
+  up.addEventListener("click",function(){
+    var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* длинную страницу сначала мгновенно поднимаем почти к началу, последний экран доезжает плавно: без лагов на слабых ПК */
+    var near=Math.round(window.innerHeight*0.8);
+    try{ if(window.scrollY>near) window.scrollTo({top:near,behavior:"instant"}); window.scrollTo({top:0,behavior:rm?"auto":"smooth"}); }catch(e){ window.scrollTo(0,0); }
+  });
 
   window.addEventListener("hashchange",function(){ fromHash(); render(false); });
   fromHash(); render(false);

@@ -14,6 +14,11 @@
     v.addEventListener("playing",function(){ v.classList.add("on"); });
     box.appendChild(v);
     var p=v.play(); if(p&&p.catch) p.catch(function(){ v.remove(); });
+    /* пауза, когда шапку не видно или вкладка свёрнута: не грузим процессор зря */
+    var vis=true;
+    function sync(){ if(!v.isConnected) return; if(vis&&!document.hidden){ var q=v.play(); if(q&&q.catch) q.catch(function(){}); } else v.pause(); }
+    if("IntersectionObserver" in window) new IntersectionObserver(function(es){ vis=es[0].isIntersecting; sync(); }).observe(box);
+    document.addEventListener("visibilitychange",sync);
   }
   if(document.readyState==="complete") start(); else window.addEventListener("load",start);
 })();
