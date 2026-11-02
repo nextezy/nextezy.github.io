@@ -287,3 +287,7 @@ figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .anim-btn{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:14px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);background:rgba(11,11,16,.6);color:var(--fg2);display:grid;place-items:center;padding:0;cursor:pointer;opacity:.75;transition:opacity .2s,border-color .2s,color .2s}
 .anim-btn:hover,.anim-btn:focus-visible{opacity:1;border-color:var(--accent);color:var(--fg)}
 .anim-btn svg{width:16px;height:16px}
+/* Секстези показывает на лого (только на компьютере) */
+.brand-pic{height:64px;width:auto;display:block;margin:-6px 0 -16px;transform:translateY(1px);filter:drop-shadow(0 0 7px rgba(139,92,246,.5))}
+.brand:has(.brand-pic){gap:6px;align-items:flex-end}
+@media (max-width:640px){.brand-pic{display:none}.brand:has(.brand-pic){align-items:center}}
