@@ -136,7 +136,7 @@ var FLASKS = {
 
 /* PoB (Path of Building) */
 var POBS = [
-  {id:"lvl", title:"Лвлинг и переход на посох (сборка MasterT)", url:"https://mobalytics.gg/poe/builds/mastert-s-cyclone-cwc-soulwrest-necromancer", desc:"Сборка MasterT на mobalytics. В его PoB (кнопка Copy Code на странице) есть деревья пассивок по актам, камни и вещи на лвлинг и на переход на Вырыватель душ."},
+  {id:"lvl", title:"Лвлинг и переход на посох (сборка MasterT)", url:"https://pobb.in/TzKeqLGG4K-f", desc:"Весь лвлинг внутри этого PoB. Откройте его и переключайте дерево пассивок внизу вкладки Tree: там отдельные деревья на каждый акт (Act 1 … Act 10) и на переход на Вырыватель душ (Soulwrest Swap). Камни и вещи тоже переключаются по этапам: наборы во вкладках Skills и Items."},
   {id:"main", title:"Основная версия", url:"https://pobb.in/iheTDtkCEcZE", desc:"Основная версия на 91 лвл: два Вырывателя душ, Древний череп, Дурной джу-джу, Воцарившаяся тьма."}
 ];
 var POB_PAIR_NOTE = "";
