@@ -65,7 +65,7 @@ assets/
 
 ## Соцсети
 
-В шапке справа иконки-ссылки (`<nav class="soc">`): YouTube https://www.youtube.com/@Nextezy/videos, Telegram https://t.me/nextezy1, Twitch https://www.twitch.tv/nextezy1.
+В шапке справа иконки-ссылки (`<nav class="soc">`): YouTube https://www.youtube.com/@Nextezy/videos, Telegram https://t.me/nextezy1, Twitch https://www.twitch.tv/nextezy1, Discord https://discord.gg/pRnzf7ZGDk (иконка `icon-discord.png`). На экранах уже 420px иконки уменьшаются, чтобы 4 штуки влезали рядом с лого.
 
 ## Шапка с анимацией лого
 

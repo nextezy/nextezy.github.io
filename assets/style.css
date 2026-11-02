@@ -280,3 +280,6 @@ figure.hsfig{margin:0;flex-basis:100%;max-width:720px}
 .hsn{position:absolute;right:-8%;top:-8%;min-width:28px;height:28px;padding:0 6px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;line-height:28px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.6);pointer-events:none}
 @media (max-width:640px){.hsn{min-width:22px;height:22px;line-height:22px;font-size:13px;padding:0 4px}}
 figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
+/* 4 иконки соцсетей на узких экранах */
+@media (max-width:420px){.soc{gap:6px}.soc a{width:38px;height:38px;border-radius:9px}.soc img{width:24px;height:24px}}
+@media (max-width:370px){.soc{gap:4px}.soc a{width:34px;height:34px}.soc img{width:22px;height:22px}.brand .logo{font-size:21px}}
