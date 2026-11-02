@@ -254,3 +254,10 @@ footer .wrap{padding-block:26px;display:flex;justify-content:space-between;gap:1
 .policy h2{font-size:26px;margin:40px 0 12px}
 .policy b{color:var(--fg)}
 .policy a{overflow-wrap:anywhere}
+/* кнопка «наверх» */
+.totop{position:fixed;right:max(20px,calc(env(safe-area-inset-right,0px) + 12px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;width:52px;height:52px;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s ease,transform .25s ease,visibility .25s,background .2s}
+.totop.on{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--accent-2)}
+.totop svg{width:24px;height:24px}
+@media (max-width:600px){.totop{width:46px;height:46px;right:max(14px,calc(env(safe-area-inset-right,0px) + 8px));bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){.totop{transition:none}}

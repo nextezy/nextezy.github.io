@@ -198,6 +198,15 @@
   function hl(){ var c=heads[0]; heads.forEach(function(h){ if(h.getBoundingClientRect().top<160) c=h; }); links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
   window.addEventListener("scroll",hl,{passive:true}); hl();
 
+
+  /* --- кнопка «наверх» --- */
+  var up=document.createElement("button"); up.type="button"; up.className="totop"; up.setAttribute("aria-label","Наверх"); up.title="Наверх";
+  up.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(up);
+  function upShow(){ up.classList.toggle("on", window.scrollY>window.innerHeight); }
+  window.addEventListener("scroll",upShow,{passive:true}); upShow();
+  up.addEventListener("click",function(){ var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches; try{window.scrollTo({top:0,behavior:rm?"auto":"smooth"})}catch(e){window.scrollTo(0,0)} });
+
   window.addEventListener("hashchange",function(){ fromHash(); render(false); });
   fromHash(); render(false);
 })();

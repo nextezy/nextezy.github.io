@@ -76,6 +76,7 @@ assets/
 - Вкладки Камни/Вещи/Флаконы рисуются из `data.js`, руками в HTML их не писать.
 - Карточки внутри текста: `<div class="ins" data-k="gems|items|flasks|craft" data-s="lvl" data-ids="id1,id2"></div>`. `data-ids` выбирает группы камней или наборы флаконов по `id` из `data.js`; для вещей не нужен. Данные общие с вкладками: правишь `data.js`, меняется везде.
 - Картинка в тексте: `<figure class="shot"><button type="button" aria-label="Открыть: Подпись"><img src="img/key.webp" alt="Подпись" loading="lazy"></button><figcaption>Подпись</figcaption></figure>` внутри `<div class="shots">`. Широкая: класс `shot wide`.
+- Кнопка «Наверх» (`.totop`, справа внизу) создаётся в `app.js`, появляется после прокрутки на один экран и плавно поднимает в самый верх страницы (решение Никиты). В HTML её не писать.
 - Ссылка на вкладку: `<button class="go" data-go="gems:lvl">Камни → Лвлинг</button>`. Ссылка на главу из карточки: `data-goto="id_главы"`.
 
 ### PoB
