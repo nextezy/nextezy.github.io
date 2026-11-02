@@ -158,8 +158,11 @@
   function hidePop(){ pop.hidden=true; cur=null; }
   var fine=window.matchMedia&&window.matchMedia("(hover:hover) and (pointer:fine)").matches;
   if(fine){
-    document.addEventListener("mouseover",function(ev){ var w=ev.target.closest&&ev.target.closest(".w"); if(w&&w!==cur) showPop(w); else if(w||ev.target.closest(".pop")) clearTimeout(hideT); });
-    document.addEventListener("mouseout",function(ev){ var w=ev.target.closest&&(ev.target.closest(".w")||ev.target.closest(".pop")); if(w){ clearTimeout(hideT); hideT=setTimeout(hidePop,220); } });
+    var showT=null; /* поинты на картинках открываются с задержкой 0.2 с, чтобы не мигали, пока ведёшь мышкой по дереву */
+    document.addEventListener("mouseover",function(ev){ var w=ev.target.closest&&ev.target.closest(".w"); clearTimeout(showT);
+      if(w&&w!==cur){ if(w.classList.contains("hs")){ clearTimeout(hideT); showT=setTimeout(function(){showPop(w)},200); } else showPop(w); }
+      else if(w||ev.target.closest(".pop")) clearTimeout(hideT); });
+    document.addEventListener("mouseout",function(ev){ var w=ev.target.closest&&(ev.target.closest(".w")||ev.target.closest(".pop")); if(w){ clearTimeout(showT); clearTimeout(hideT); hideT=setTimeout(hidePop,220); } });
   }
   window.addEventListener("scroll",function(){ if(!pop.hidden) hidePop(); },{passive:true});
 
