@@ -157,7 +157,7 @@
   var pop=document.getElementById("pop"), cur=null, hideT=null;
   function showPop(el){
     var e=W[el.dataset.w]; if(!e) return; clearTimeout(hideT); cur=el;
-    pop.scrollTop=0;pop.innerHTML='<div class="k">'+esc(e.k)+'</div><h5>'+esc(e.t)+'</h5>'+(e.en&&e.en!==e.t?'<div class="pen">'+esc(e.en)+'</div>':'<div style="height:6px"></div>')+'<p>'+esc(e.d)+'</p>'+(e.img&&IMG[e.img]?'<img src="'+IMG[e.img]+'" alt="'+esc(e.t)+'">':'')+(e.p?'<a href="https://poedb.tw/ru/'+encodeURIComponent(e.p)+'" target="_blank" rel="noopener">Открыть на poedb →</a>':'');
+    pop.scrollTop=0;pop.innerHTML='<button type="button" class="pop-x" aria-label="Закрыть подсказку"></button><div class="k">'+esc(e.k)+'</div><h5>'+esc(e.t)+'</h5>'+(e.en&&e.en!==e.t?'<div class="pen">'+esc(e.en)+'</div>':'<div style="height:6px"></div>')+'<p>'+esc(e.d)+'</p>'+(e.img&&IMG[e.img]?'<img src="'+IMG[e.img]+'" alt="'+esc(e.t)+'">':'')+(e.p?'<a href="https://poedb.tw/ru/'+encodeURIComponent(e.p)+'" target="_blank" rel="noopener">Открыть на poedb →</a>':'');
     pop.hidden=false;
     var r=el.getBoundingClientRect(), pw=pop.offsetWidth, ph=pop.offsetHeight, vw=window.innerWidth, vh=window.innerHeight;
     var left=Math.min(Math.max(12,r.left+r.width/2-pw/2),vw-pw-12);
@@ -199,6 +199,7 @@
     var t=ev.target;
     var g=t.closest("[data-go]"); if(g){ var p=g.dataset.go.split(":"); go(p[0],p[1]); return; }
     var s=t.closest("figure.shot button"); if(s){ var im=s.querySelector("img"); lbimg.src=im.src; lbcap.textContent=im.alt; lb.hidden=false; return; }
+    if(t.closest(".pop-x")){ hidePop(); return; }
     var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&!pop.hidden) hidePop(); else showPop(w); return; }
     if(!t.closest(".pop")) hidePop();
   });
