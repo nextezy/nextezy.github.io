@@ -54,6 +54,8 @@ var IMG={
 "moh": "img/moh.webp",
 "lvlchest": "img/lvlchest.webp",
 "lvlhelm": "img/lvlhelm.webp",
+"endhelm": "img/endhelm.webp",
+"eldritch": "img/eldritch.webp",
 "lvlgloves": "img/lvlgloves.webp",
 "lvlboots": "img/lvlboots.webp",
 "amulet": "img/amulet.webp",
@@ -168,6 +170,7 @@ var ITEMS = {
       {slot:"Кольца", u:["Укол предательства (Betrayal's Sting), 2 штуки"], text:"До 48% с Ядовитыми катализаторами.", imgs:[["sting","Укол предательства"]], buy:""},
       {slot:"Щит", req:["Максимум шанса блока","Блок чар (15%+)","Подавление чар или резисты"], max:"Свалин (Svalinn)", imgs:[["blockshield","Жёлтый щит на блок"],["svalinn","Свалин"]], buy:""},
       {slot:"Перчатки", u:["Укус змеи (Snakebite)"], imgs:[["snakebite","Укус змеи"]], buy:""},
+      {slot:"Шлем", req:["База на уклонение","Недостающие резисты","Интеллект"], text:"Очень важно докрафтить сверху эффективность расхода маны (древними угольками, Eldritch Ember) и эффективность удержания маны умениями (зловещими ихорами, Eldritch Ichor).", imgs:[["endhelm","Шлем в эндгейме"],["eldritch","Угольки и ихоры"]]},
       {slot:"Пояс", u:["Восторг Олесии (Olesya's Delight)"], imgs:[["olesya","Восторг Олесии"]], buy:""},
       {slot:"Ботинки", u:["Нетерпение Ралакеша (Ralakesh's Impatience)"], text:"Только версия на заряды ярости.", imgs:[["ralakesh","Нетерпение Ралакеша"]], buy:""},
       {slot:"Самоцветы", u:["Запретная плоть (Forbidden Flesh)","Запретное пламя (Forbidden Flame)"], text:"Восхождение Avidity. Остальные самоцветы в разделе «Самоцветы».", imgs:[["forbidden","Запретная плоть и Запретное пламя"]], buy:""}
