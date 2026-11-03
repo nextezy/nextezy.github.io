@@ -143,6 +143,15 @@
     });
   }
   document.querySelectorAll("[data-scope]").forEach(linkScope);
+  /* названия камней (.g) подсвечиваем всегда, даже если в главе уже было упоминание */
+  document.querySelectorAll(".g").forEach(function(g){
+    if(g.querySelector(".w")||g.closest(SKIP)) return;
+    var n=textNodes(g)[0]; if(!n) return;
+    for(var i=0;i<RX.length;i++){ var m=RX[i].re.exec(n.nodeValue);
+      if(m&&m[0].length){ var mid=n.splitText(m.index); mid.splitText(m[0].length);
+        var sp=document.createElement("span"); sp.className="w"; sp.tabIndex=0; sp.dataset.w=RX[i].id; sp.setAttribute("role","button");
+        mid.parentNode.replaceChild(sp,mid); sp.appendChild(mid); return; } }
+  });
 
   /* --- всплывашка --- */
   var pop=document.getElementById("pop"), cur=null, hideT=null;
