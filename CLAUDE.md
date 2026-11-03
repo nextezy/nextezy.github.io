@@ -159,7 +159,7 @@ git fetch origin main && git push origin main
 
 ## Поиск Google
 
-`sitemap.xml` и `robots.txt` в корне. При новом гайде добавить его адрес в `sitemap.xml` (и обновлять `lastmod` при больших правках). Сайт добавлен в Google Search Console как ресурс домена (подтверждение записью TXT `google-site-verification=…` в Porkbun, её не удалять).
+`sitemap.xml` и `robots.txt` в корне. В `<title>` и `meta description` гайда писать слова, которыми игроки ищут билд в Google (сленг: «банки», «PConc» и т.п.), и упомянуть их один раз в первом абзаце «О билде»; крупный h1 оставлять официальным названием (решение Никиты). При новом гайде добавить его адрес в `sitemap.xml` (и обновлять `lastmod` при больших правках). Сайт добавлен в Google Search Console как ресурс домена (подтверждение записью TXT `google-site-verification=…` в Porkbun, её не удалять).
 
 ## Статистика
 
