@@ -167,9 +167,9 @@
   function hidePop(){ pop.hidden=true; cur=null; }
   var fine=window.matchMedia&&window.matchMedia("(hover:hover) and (pointer:fine)").matches;
   if(fine){
-    var showT=null; /* подсказки открываются с задержкой: слова в тексте 0.3 с (чтобы не открывались случайно, решение Никиты), поинты на картинках 0.2 с */
+    var showT=null; /* подсказки открываются с задержкой: слова в тексте 0.5 с (чтобы не открывались случайно, решение Никиты), поинты на картинках 0.2 с */
     document.addEventListener("mouseover",function(ev){ var w=ev.target.closest&&ev.target.closest(".w"); clearTimeout(showT);
-      if(w&&w!==cur){ clearTimeout(hideT); showT=setTimeout(function(){showPop(w)},w.classList.contains("hs")?200:300); }
+      if(w&&w!==cur){ clearTimeout(hideT); showT=setTimeout(function(){showPop(w)},w.classList.contains("hs")?200:500); }
       else if(w||ev.target.closest(".pop")) clearTimeout(hideT); });
     document.addEventListener("mouseout",function(ev){ var w=ev.target.closest&&(ev.target.closest(".w")||ev.target.closest(".pop")); if(w){ clearTimeout(showT); clearTimeout(hideT); hideT=setTimeout(hidePop,220); } });
   }
