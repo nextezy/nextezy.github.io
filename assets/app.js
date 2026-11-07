@@ -154,17 +154,19 @@
   });
 
   /* --- всплывашка --- */
-  var pop=document.getElementById("pop"), cur=null, hideT=null;
+  var pop=document.getElementById("pop"), cur=null, hideT=null; pop.hidden=false; /* видимость через класс .on: анимация появления (вариант 2, выбор Никиты) */
+  function isOpen(){ return pop.classList.contains("on"); }
   function showPop(el){
     var e=W[el.dataset.w]; if(!e) return; clearTimeout(hideT); cur=el;
     pop.scrollTop=0;pop.innerHTML='<button type="button" class="pop-x" aria-label="Закрыть подсказку"></button><div class="k">'+esc(e.k)+'</div><h5>'+esc(e.t)+'</h5>'+(e.en&&e.en!==e.t?'<div class="pen">'+esc(e.en)+'</div>':'<div style="height:6px"></div>')+'<p>'+esc(e.d)+'</p>'+(e.img&&IMG[e.img]?'<img src="'+IMG[e.img]+'" alt="'+esc(e.t)+'">':'')+(e.p?'<a href="https://poedb.tw/ru/'+encodeURIComponent(e.p)+'" target="_blank" rel="noopener">Открыть на poedb →</a>':'');
-    pop.hidden=false;
+    var was=isOpen(); if(!was){ pop.classList.remove("on"); }
     var r=el.getBoundingClientRect(), pw=pop.offsetWidth, ph=pop.offsetHeight, vw=window.innerWidth, vh=window.innerHeight;
     var left=Math.min(Math.max(12,r.left+r.width/2-pw/2),vw-pw-12);
     var top=r.bottom+10; if(top+ph>vh-12 && r.top-ph-10>12) top=r.top-ph-10; if(top+ph>vh-12) top=Math.max(12,vh-ph-12);
     pop.style.left=left+"px"; pop.style.top=top+"px";
+    if(!was){ pop.style.transformOrigin=Math.round(r.left+r.width/2-left)+"px "+(top>=r.bottom?"0":"100%"); void pop.offsetWidth; pop.classList.add("on"); }
   }
-  function hidePop(){ pop.hidden=true; cur=null; }
+  function hidePop(){ pop.classList.remove("on"); cur=null; }
   var fine=window.matchMedia&&window.matchMedia("(hover:hover) and (pointer:fine)").matches;
   if(fine){
     var showT=null; /* подсказки открываются с задержкой: слова в тексте 0.5 с (чтобы не открывались случайно, решение Никиты), поинты на картинках 0.2 с */
@@ -173,7 +175,7 @@
       else if(w||ev.target.closest(".pop")) clearTimeout(hideT); });
     document.addEventListener("mouseout",function(ev){ var w=ev.target.closest&&(ev.target.closest(".w")||ev.target.closest(".pop")); if(w){ clearTimeout(showT); clearTimeout(hideT); hideT=setTimeout(hidePop,220); } });
   }
-  window.addEventListener("scroll",function(){ if(!pop.hidden) hidePop(); },{passive:true});
+  window.addEventListener("scroll",function(){ if(isOpen()) hidePop(); },{passive:true});
 
   /* --- вкладки, этапы, адрес --- */
   var state={tab:"guide",stage:ST[0]}, bar=document.getElementById("stages");
@@ -200,7 +202,7 @@
     var g=t.closest("[data-go]"); if(g){ var p=g.dataset.go.split(":"); go(p[0],p[1]); return; }
     var s=t.closest("figure.shot button"); if(s){ var im=s.querySelector("img"); lbimg.src=im.src; lbcap.textContent=im.alt; lb.hidden=false; return; }
     if(t.closest(".pop-x")){ hidePop(); return; }
-    var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&!pop.hidden) hidePop(); else showPop(w); return; }
+    var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&isOpen()) hidePop(); else showPop(w); return; }
     if(!t.closest(".pop")) hidePop();
   });
   document.addEventListener("keydown",function(ev){
