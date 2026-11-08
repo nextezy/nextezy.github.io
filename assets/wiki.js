@@ -77,7 +77,7 @@ var WIKI = [
 {id:"c-rumi", pg:["cyclone"], t:"Отвар Руми", en:"Rumi's Concoction", k:"Уникальный флакон", p:"Rumi%27s_Concoction", img:"rumi", m:["Отвар\\p{L}* Руми","Rumi's Concoction"],
  d:"Гранитный флакон, который во время действия даёт шанс блокировать атаки и чары."},
 {id:"c-diamond", pg:["cyclone"], t:"Алмазный флакон", en:"Diamond Flask", k:"Флакон", p:"Diamond_Flask", img:"diamond", m:["Алмазн\\p{L}*","Diamond Flask"],
- d:"Во время действия шанс критического удара считается удачным: бросается дважды, берётся лучший результат."},
+ d:"Во время действия 100% повышение шанса критического удара. Длится 6 секунд."},
 {id:"c-silver", pg:["cyclone"], t:"Серебряный флакон", en:"Silver Flask", k:"Флакон", p:"Silver_Flask", img:"silver", m:["Серебрян\\p{L}*","Silver Flask"],
  d:"Даёт Боевой раж: скорость атаки и передвижения. Суффикс на броню во время действия делает его ещё и защитным."},
 {id:"c-granite", pg:["cyclone"], t:"Гранитный флакон", en:"Granite Flask", k:"Флакон", p:"Granite_Flask", img:"granite", m:["Гранитн\\p{L}*","Granite Flask"],
