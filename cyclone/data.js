@@ -36,10 +36,9 @@ var GEMS = {
     note: "Сетап после актов (PoB 1).",
     groups: [
       {id:"mp-body", title:"Нагрудник", gems:["Вихрь (Cyclone)","Ударная волна (Shockwave)","Распыление (Pulverise)","Усиленное поддержание (Infused Channelling)","Физический урон ближнего боя (Melee Physical Damage)"]},
-      {id:"mp-body2", title:"Нагрудник, отдельно", gems:["Гордость (Pride)"]},
       {id:"mp-helm", title:"Шлем", gems:["Наскок (Leap Slam)","Импульс (Momentum)","Ускорение атак (Faster Attacks)"]},
       {id:"mp-boots", title:"Ботинки", gems:["Метка убийцы (Assassin's Mark)","Метка при попадании (Mark On Hit)"]},
-      {id:"mp-staff", title:"Посох", gems:["Камень и плоть (Flesh and Stone)","Кровь и песок (Blood and Sand)"]}
+      {id:"mp-staff", title:"Посох", gems:["Гордость (Pride)","Камень и плоть (Flesh and Stone)","Кровь и песок (Blood and Sand)"]}
     ]
   },
   pin: {
