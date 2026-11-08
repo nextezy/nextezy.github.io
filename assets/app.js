@@ -154,6 +154,7 @@
   });
 
   /* --- всплывашка --- */
+  var RM=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
   var pop=document.getElementById("pop"), cur=null, hideT=null; pop.hidden=false; /* видимость через класс .on: анимация появления (вариант 2, выбор Никиты) */
   function isOpen(){ return pop.classList.contains("on"); }
   function showPop(el){
@@ -186,6 +187,7 @@
     document.querySelectorAll(".stage").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.stage===state.stage)});
     document.querySelectorAll(".panel [data-stage]").forEach(function(el){el.hidden=el.dataset.stage!==state.stage});
     if(jump){ var y=document.querySelector(".tabsbar").offsetTop; if(window.scrollY>y) window.scrollTo(0,y); }
+    fxTabs();
   }
   function setHash(){ var h=(state.tab==="guide"||state.tab==="pob")?state.tab:state.tab+"-"+state.stage; if(location.hash.slice(1)!==h){ try{history.replaceState(null,"","#"+h)}catch(e){} } }
   function fromHash(){ var h=location.hash.slice(1); if(!h) return; var p=h.split("-"); if(TABS.indexOf(p[0])>=0){ state.tab=p[0]; if(ST.indexOf(p[1])>=0) state.stage=p[1]; } else if(document.getElementById(h)) state.tab="guide"; }
@@ -195,18 +197,30 @@
 
   /* --- лайтбокс --- */
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg"), lbcap=document.getElementById("lbcap");
-  lb.addEventListener("click",function(){lb.hidden=true});
+  lb.hidden=false; var lbSrc=null, LBE="cubic-bezier(.25,.8,.3,1)";
+  /* картинка вырастает из своего места на странице и улетает обратно (решение Никиты): одинаковый масштаб, от центра, плюс проявление */
+  function lbFrom(){ if(!lbSrc) return null; var f=lbSrc.getBoundingClientRect(); if(f.bottom<0||f.top>window.innerHeight||!f.width) return null;
+    lbimg.style.transform="none"; var t=lbimg.getBoundingClientRect(); if(!t.width) return null;
+    return "translate("+((f.left+f.width/2)-(t.left+t.width/2))+"px,"+((f.top+f.height/2)-(t.top+t.height/2))+"px) scale("+(f.width/t.width)+")"; }
+  function openLb(im){ lbSrc=im; lbimg.style.transition="none"; lbimg.style.opacity="1"; lbimg.src=im.src; lbcap.textContent=im.alt; lb.classList.add("open");
+    function go(){ if(RM) return; var fr=lbFrom(); if(!fr) return; lbimg.style.transition="none"; lbimg.style.transform=fr; lbimg.style.opacity=".4"; void lbimg.offsetWidth;
+      lbimg.style.transition="transform .5s "+LBE+",opacity .25s ease"; lbimg.style.transform="none"; lbimg.style.opacity="1"; }
+    if(lbimg.complete&&lbimg.naturalWidth) go(); else lbimg.onload=function(){ lbimg.onload=null; go(); }; }
+  function closeLb(){ if(!lb.classList.contains("open")) return; var fr=RM?null:lbFrom();
+    lbimg.style.transition="none"; lbimg.style.transform="none"; void lbimg.offsetWidth;
+    lbimg.style.transition="transform .32s cubic-bezier(.4,0,.2,1),opacity .3s ease"; if(fr) lbimg.style.transform=fr; lbimg.style.opacity="0"; lb.classList.remove("open"); }
+  lb.addEventListener("click",closeLb);
 
   document.addEventListener("click",function(ev){
     var t=ev.target;
     var g=t.closest("[data-go]"); if(g){ var p=g.dataset.go.split(":"); go(p[0],p[1]); return; }
-    var s=t.closest("figure.shot button"); if(s){ var im=s.querySelector("img"); lbimg.src=im.src; lbcap.textContent=im.alt; lb.hidden=false; return; }
+    var s=t.closest("figure.shot button"); if(s){ openLb(s.querySelector("img")); return; }
     if(t.closest(".pop-x")){ hidePop(); return; }
     var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&isOpen()) hidePop(); else showPop(w); return; }
     if(!t.closest(".pop")) hidePop();
   });
   document.addEventListener("keydown",function(ev){
-    if(ev.key==="Escape"){ lb.hidden=true; hidePop(); }
+    if(ev.key==="Escape"){ closeLb(); hidePop(); }
     if((ev.key==="Enter"||ev.key===" ")&&document.activeElement&&document.activeElement.classList.contains("w")){ ev.preventDefault(); showPop(document.activeElement); }
   });
 
@@ -220,7 +234,7 @@
     /* в самом низу страницы короткий последний раздел (Итог) не может доехать до верха: берём последний видимый заголовок */
     var de=document.documentElement;
     if(window.innerHeight+window.scrollY>=de.scrollHeight-4){ for(i=heads.length-1;i>=0;i--){ var t=heads[i].getBoundingClientRect().top; if(t>=0&&t<window.innerHeight*0.7){ c=heads[i]; break; } } }
-    if(c===hlCur) return; hlCur=c; links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); }
+    if(c===hlCur) return; hlCur=c; links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+c.id)}); tocInd(); }
   /* переход по оглавлению: далёкий прыжок мгновенно до экрана перед разделом, остаток плавно, потом поправка,
      если над разделом догрузились картинки и он сдвинулся */
   var goSeq=0; ["wheel","touchstart","keydown","mousedown"].forEach(function(n){ window.addEventListener(n,function(){ goSeq++; },{passive:true}); });
@@ -253,6 +267,28 @@
     try{ if(window.scrollY>near) window.scrollTo({top:near,behavior:"instant"}); window.scrollTo({top:0,behavior:rm?"auto":"smooth"}); }catch(e){ window.scrollTo(0,0); }
   });
 
+  /* --- плавные анимации (решение Никиты): вкладки, этапы, оглавление, картинки при прокрутке --- */
+  var tabsEl=document.querySelector(".tabs"), tline=document.createElement("span"); tline.className="tabline"; tabsEl.appendChild(tline); tabsEl.classList.add("has-line");
+  var pill=document.createElement("span"); pill.className="pill"; bar.insertBefore(pill,bar.firstChild); bar.classList.add("has-pill");
+  var fxLast=null, barWasHidden=true;
+  function place(el,b,now,line){ if(now) el.style.transition="none"; el.style.left=b.offsetLeft+"px"; el.style.width=b.offsetWidth+"px"; el.style.top=(line?b.offsetTop+b.offsetHeight-2:b.offsetTop)+"px"; el.style.height=(line?2:b.offsetHeight)+"px"; if(now){ void el.offsetWidth; el.style.transition=""; } }
+  function fxTabs(){ if(!tline) return;
+    var tb=document.getElementById("t-"+state.tab); if(tb) place(tline,tb,fxLast===null,true);
+    var sb=bar.querySelector('.stage[data-stage="'+state.stage+'"]'); if(!bar.hidden&&sb) place(pill,sb,barWasHidden); barWasHidden=bar.hidden;
+    var key=state.tab+"|"+state.stage;
+    if(fxLast!==null&&fxLast!==key&&!RM){ var pn=document.getElementById("p-"+state.tab); pn.classList.remove("swap"); void pn.offsetWidth; pn.classList.add("swap"); }
+    fxLast=key; }
+  document.querySelectorAll(".tabsbar ~ main > section, main > section").forEach(function(pn){ pn.addEventListener("animationend",function(){ pn.classList.remove("swap"); }); });
+  var tocOl=toc, ind=document.createElement("span"); ind.className="ind"; tocOl.appendChild(ind); tocOl.classList.add("has-ind"); var indFirst=true;
+  function tocInd(){ if(!ind) return; var a=toc.querySelector("a.on"); if(!a) return; place(ind,a,indFirst); indFirst=false; }
+  function refit(){ fxTabs(); indFirst=true; tocInd(); }
+  window.addEventListener("resize",refit); window.addEventListener("load",refit); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(refit);
+  if(!RM&&"IntersectionObserver" in window){
+    var rvIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target, sib=el.parentNode?[].indexOf.call(el.parentNode.children,el):0;
+      setTimeout(function(){ el.classList.add("in"); },Math.min(sib,4)*90); rvIO.unobserve(el); }); },{rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll("figure.shot, figure.hsfig").forEach(function(el){ el.classList.add("rv"); rvIO.observe(el); });
+  }
+
   window.addEventListener("hashchange",function(){ fromHash(); render(false); });
-  fromHash(); render(false);
+  fromHash(); render(false); tocInd();
 })();

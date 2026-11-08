@@ -309,3 +309,35 @@ figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 }
 @media (max-width:380px){.tab{font-size:16px;padding-inline:7px}}
 @media (max-width:340px){.tab{font-size:15px;padding-inline:5px}}
+
+/* ===== плавные анимации (решение Никиты, тесты одобрены 08.11.2026) ===== */
+/* вкладки: полоска под активной вкладкой переезжает */
+.tabs{position:relative}
+.tabs.has-line .tab[aria-selected="true"]{border-bottom-color:transparent}
+.tabline{position:absolute;background:var(--accent);border-radius:2px;pointer-events:none;transition:left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1)}
+/* этапы: фиолетовая плашка переезжает */
+.stages{position:relative}
+.stage{position:relative;z-index:1;transition:color .25s ease}
+.stages.has-pill .stage[aria-pressed="true"]{background:transparent}
+.pill{position:absolute;border-radius:7px;background:var(--accent);pointer-events:none;transition:left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),top .35s cubic-bezier(.2,.8,.2,1)}
+/* смена вкладки или этапа: содержимое плавно появляется */
+.swap{animation:nx-swap .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes nx-swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* оглавление: подсветка текущего раздела переезжает */
+.rail ol{position:relative}
+.rail ol.has-ind a.on{background:transparent}
+.rail a{position:relative;z-index:1;transition:color .25s ease}
+.rail .ind{position:absolute;left:0;right:0;border-radius:8px;background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent);pointer-events:none;transition:top .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1)}
+/* картинки проявляются при прокрутке */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease-out,transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+/* поинты восхождений: увеличиваются и светятся */
+.hs.w{transition:border-color .2s ease,box-shadow .25s ease,transform .25s cubic-bezier(.2,.9,.25,1.3)}
+.hs.w:hover,.hs.w:focus-visible{transform:translate(-50%,-50%) scale(1.15)}
+/* картинка на весь экран: фон плавно затемняется, картинка вырастает из своего места (в app.js) */
+.lb{visibility:hidden;background:rgba(4,4,8,0);transition:background .3s ease,visibility 0s .3s}
+.lb.open{visibility:visible;background:rgba(4,4,8,.94);transition:background .3s ease,visibility 0s}
+.lb p{opacity:0;transition:opacity .25s ease}
+.lb.open p{opacity:1}
+@media (prefers-reduced-motion:reduce){.tabline,.pill,.rail .ind,.rv,.hs.w,.stage,.rail a{transition:none!important}.rv{opacity:1;transform:none}.swap{animation:none}.hs.w:hover{transform:translate(-50%,-50%)}}
+
