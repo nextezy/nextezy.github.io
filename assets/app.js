@@ -202,8 +202,12 @@
   function lbFrom(){ if(!lbSrc) return null; var f=lbSrc.getBoundingClientRect(); if(f.bottom<0||f.top>window.innerHeight||!f.width) return null;
     lbimg.style.transform="none"; var t=lbimg.getBoundingClientRect(); if(!t.width) return null;
     return "translate("+((f.left+f.width/2)-(t.left+t.width/2))+"px,"+((f.top+f.height/2)-(t.top+t.height/2))+"px) scale("+(f.width/t.width)+")"; }
+  /* маленькие картинки на весь экран увеличиваем: до 60% ширины экрана (на телефоне на всю ширину), но не больше чем в 2.5 раза и не больше экрана (решение Никиты) */
+  function lbSize(){ var nw=lbimg.naturalWidth, nh=lbimg.naturalHeight; if(!nw||!nh) return; var cs=getComputedStyle(lb);
+    var aw=lb.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight), ah=lb.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-30;
+    var sc=Math.min(aw/nw, ah/nh, Math.max(1, Math.min(2.5, (aw<700?aw:aw*0.6)/nw))); lbimg.style.width=Math.round(nw*sc)+"px"; lbimg.style.height="auto"; }
   function openLb(im){ lbSrc=im; lbimg.style.transition="none"; lbimg.style.opacity="1"; lbimg.src=im.src; lbcap.textContent=im.alt; lb.classList.add("open");
-    function go(){ if(RM) return; var fr=lbFrom(); if(!fr) return; lbimg.style.transition="none"; lbimg.style.transform=fr; lbimg.style.opacity=".4"; void lbimg.offsetWidth;
+    function go(){ lbSize(); if(RM) return; var fr=lbFrom(); if(!fr) return; lbimg.style.transition="none"; lbimg.style.transform=fr; lbimg.style.opacity=".4"; void lbimg.offsetWidth;
       lbimg.style.transition="transform .5s "+LBE+",opacity .25s ease"; lbimg.style.transform="none"; lbimg.style.opacity="1"; }
     if(lbimg.complete&&lbimg.naturalWidth) go(); else lbimg.onload=function(){ lbimg.onload=null; go(); }; }
   function closeLb(){ if(!lb.classList.contains("open")) return; var fr=RM?null:lbFrom();
