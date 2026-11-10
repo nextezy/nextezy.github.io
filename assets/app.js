@@ -88,6 +88,13 @@
 
   /* --- флаконы --- */
   function flaskSet(f, full){
+    if(f.kind==="tip") return '<div class="fl-tip" data-scope>'+(f.title?'<b>'+esc(f.title)+'</b> ':'')+esc(f.text)+'</div>';
+    if(f.kind==="fl"){
+      var b=tradeBtns(f,"hbuy"), im=f.img&&IMG[f.img]?'<button type="button" class="fl-ic" aria-label="Открыть: '+esc(f.title)+'"><img src="'+IMG[f.img]+'" alt="'+esc(f.title)+'" loading="lazy"></button>':'';
+      return '<div class="card fl-card" data-scope><h4 class="slh"><span class="fl-h">'+im+'<span>'+esc(f.title)+'</span></span>'+(b?'<span class="hbuys">'+b+'</span>':'')+'</h4>'
+        +'<div class="fl-mods">'+(f.pre?'<b class="fl-p">Префикс</b><span>'+esc(f.pre)+'</span>':'')+(f.suf?'<b class="fl-s">Суффикс</b><span>'+esc(f.suf)+'</span>':'')+'</div>'
+        +(f.why?'<div class="fl-why">'+esc(f.why)+'</div>':'')+'</div>';
+    }
     var h='<div class="card" data-scope><h4><span>'+esc(f.title)+'</span>'+(f.tag?'<span class="tag '+(f.tag==="лучше"?"max":f.tag==="дешевле"?"cheap":"boss")+'">'+esc(f.tag)+'</span>':'')+'</h4>';
     if(f.tr&&f.tr.length) h+='<div class="tbox">'+(f.tr.length===1&&f.tr[0].l==="Трейд"?'':'<span class="hlbl">Трейд:</span>')+'<span class="tcol">'+f.tr.map(function(e){return '<a class="hbuy" href="'+esc(tradeUrl(e))+'" target="_blank" rel="noopener" title="'+TR_TIP+'">'+esc(e.l||"Трейд")+' <span aria-hidden="true">↗</span></a>'}).join("")+'</span></div>'+resNote(f);
     if(f.rows) h+='<div class="tbl" style="margin:0"><table><tr>'+f.head.map(function(x){return '<th>'+esc(x)+'</th>'}).join("")+'</tr>'+f.rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td'+(i===0&&f.head[0]==="Слот"?' class="num"':'')+'>'+esc(c)+'</td>'}).join("")+'</tr>'}).join("")+'</table></div>';
@@ -268,6 +275,7 @@
     var t=ev.target;
     var g=t.closest("[data-go]"); if(g){ var p=g.dataset.go.split(":"); go(p[0],p[1]); return; }
     var s=t.closest("figure.shot button"); if(s){ openLb(s.querySelector("img")); return; }
+    var fi=t.closest(".fl-ic"); if(fi){ openLb(fi.querySelector("img")); return; }
     if(t.closest(".pop-x")){ hidePop(); return; }
     var w=t.closest(".w"); if(w){ if(!fine&&cur===w&&isOpen()) hidePop(); else showPop(w); return; }
     if(!t.closest(".pop")) hidePop();
