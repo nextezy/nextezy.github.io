@@ -89,6 +89,7 @@
   /* --- флаконы --- */
   function flaskSet(f, full){
     var h='<div class="card" data-scope><h4><span>'+esc(f.title)+'</span>'+(f.tag?'<span class="tag '+(f.tag==="лучше"?"max":f.tag==="дешевле"?"cheap":"boss")+'">'+esc(f.tag)+'</span>':'')+'</h4>';
+    if(f.tr&&f.tr.length) h+='<div class="tbox"><span class="hlbl">Трейд:</span><span class="tcol">'+f.tr.map(function(e){return '<a class="hbuy" href="'+esc(tradeUrl(e))+'" target="_blank" rel="noopener" title="'+TR_TIP+'">'+esc(e.l||"Трейд")+' <span aria-hidden="true">↗</span></a>'}).join("")+'</span></div>'+resNote(f);
     if(f.rows) h+='<div class="tbl" style="margin:0"><table><tr>'+f.head.map(function(x){return '<th>'+esc(x)+'</th>'}).join("")+'</tr>'+f.rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td'+(i===0&&f.head[0]==="Слот"?' class="num"':'')+'>'+esc(c)+'</td>'}).join("")+'</tr>'}).join("")+'</table></div>';
     if(f.req&&full) h+='<ul class="req" style="margin-top:12px">'+f.req.map(function(r){return '<li>'+esc(r)+'</li>'}).join("")+'</ul>';
     if(f.text&&(full||!f.rows)) h+='<p>'+esc(f.text)+'</p>';
