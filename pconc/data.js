@@ -106,7 +106,7 @@ var GEMS = {
   red: {
     note: "На этом этапе появляется 6-линк Дендрогнев, и в основную связку добавляется Greater Chain (+50% мор к количеству цепей).",
     groups: [
-      {id:"red-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Манипуляция пустотой (Void Manipulation)","Большая цепь (Greater Chain)|1 лвл"]},
+      {id:"red-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Манипуляция пустотой (Void Manipulation)","Большая цепь (Greater Chain)"]},
       {id:"red-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)|19 лвл"]},
       {id:"red-aura", title:"Шлем", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
       {id:"red-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
@@ -116,7 +116,7 @@ var GEMS = {
   end: {
     note: "",
     groups: [
-      {id:"end-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Яростные снаряды (Vicious Projectiles)","Безграничные состояния (Unbound Ailments)","Большая цепь (Greater Chain)|2 лвл"]},
+      {id:"end-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Яростные снаряды (Vicious Projectiles)","Безграничные состояния (Unbound Ailments)","Большая цепь (Greater Chain)"]},
       {id:"end-move", title:"Перчатки", gems:["Удар щитом (Shield Charge)|1 лвл","Ледяной скачок (Frostblink)","Импульс (Momentum)","Ускорение атак (Faster Attacks)"]},
       {id:"end-aura", title:"Шлем", gems:["Злорадство (Malevolence)","Грация (Grace)","Щит бури (Tempest Shield)"], text:"Злорадство стоит вместо Вестника агонии: шанс отравить теперь закрывают нагрудник и перчатки. Щит бури даёт иммунитет к шоку.", imgs:[["malev","Злорадство"],["tempest","Щит бури"]]},
             {id:"end-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Призыв к бессмертию (Immortal Call)|2 лвл","Кровавый угар (Blood Rage)|1 лвл"]},
@@ -247,4 +247,15 @@ var HOTSPOTS = {
     {"x": 401, "y": 144, "r": 31, "k": "Не берём", "t": "Эффекты флакона и получение зарядов", "en": "Flask Effect and Charges Gained", "d": "10% увеличение получаемого количества зарядов флакона\n5% усиление эффекта применённых на вас флаконов", "p": "Pathfinder"},
     {"x": 455, "y": 348, "r": 31, "k": "Не берём", "t": "Эффекты флакона и получение зарядов", "en": "Flask Effect and Charges Gained", "d": "10% увеличение получаемого количества зарядов флакона\n5% усиление эффекта применённых на вас флаконов", "p": "Pathfinder"}
   ]}
+};
+
+/* Кнопки трейда у камней: на этапах stages у камней без особого уровня кнопка 20/20; special задаёт свои кнопки (lo/hi уровень, без lo любой уровень; q качество); sup = камни поддержки (на трейде «Поддержка: …»); disc = камни-варианты (база и вариант на трейде) */
+var GEM_TRADE = {
+  stages: ["red","end"],
+  special: {
+    "Отскакивающая ядовитая смесь": [{l:"1 лвл",lo:1,hi:1},{l:"20 лвл",lo:20,hi:20},{l:"21 лвл",lo:21}],
+    "Большая цепь": [{l:"Трейд"}]
+  },
+  disc: {"Отскакивающая ядовитая смесь": ["Ядовитая смесь","alt_x"]},
+  sup: ["Безграничные состояния","Большая цепь","Большой залп","Жизнеотвод","Заносчивость","Импульс","Манипуляция пустотой","Метка при попадании","Много дополнительных снарядов","Продление","Сотворение чар при получении урона","Ускорение атак","Яростные снаряды"]
 };

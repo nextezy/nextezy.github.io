@@ -9,13 +9,28 @@
   function split(name){ var m=/^(.*?) \((.*)\)(.*)$/.exec(name); return m?{ru:m[1],en:m[2],rest:m[3]}:{ru:name,en:"",rest:""}; }
 
   /* --- камни --- */
-  function gemLi(line){
-    var p=line.split("|"), s=split(p[0]), lv=p[1]||"";
-    return '<li data-copy="'+esc(p[0]+(lv?" "+lv:""))+'"><span><span class="g">'+esc(s.ru)+'</span> <span class="en">('+esc(s.en)+')</span></span>'+(lv?'<span class="lv">'+esc(lv)+'</span>':'')+'</li>';
+  function gemLi(line, s){
+    var p=line.split("|"), sn=split(p[0]), lv=p[1]||"";
+    return '<li data-copy="'+esc(p[0]+(lv?" "+lv:""))+'"><span><span class="g">'+esc(sn.ru)+'</span> <span class="en">('+esc(sn.en)+')</span></span><span class="gr">'+(lv?'<span class="lv">'+esc(lv)+'</span>':'')+gemTrade(sn.ru,lv,s)+'</span></li>';
   }
-  function gemCard(g, full){
+  /* кнопки трейда у камней: GEM_TRADE в data.js гайда (необязателен) */
+  function gemTrade(name, lv, s){
+    var G=window.GEM_TRADE; if(!G||!s) return "";
+    var sp=G.special&&G.special[name], list;
+    if(sp) list=sp;
+    else if(!lv && G.stages.indexOf(s)>=0) list=[{l:"20/20",lo:20,hi:20,q:20}];
+    else return "";
+    var d=G.disc&&G.disc[name], t=d?{option:d[0],discriminator:d[1]}:((G.sup||[]).indexOf(name)>=0?"Поддержка: "+name:name);
+    return list.map(function(e){
+      var mf={}; if(e.lo!=null){ mf.gem_level={min:e.lo}; if(e.hi!=null) mf.gem_level.max=e.hi; } if(e.q) mf.quality={min:e.q};
+      var q={status:{option:"securable"},type:t}; for(var k in mf){ q.filters={misc_filters:{filters:mf}}; break; }
+      var u=TRADE_HOST+encodeURIComponent(TRADE_LEAGUE)+"?q="+encodeURIComponent(JSON.stringify({query:q,sort:{price:"asc"}}));
+      return '<a class="gbuy" href="'+esc(u)+'" target="_blank" rel="noopener" title="'+TR_TIP+'">'+esc(e.l)+' <span aria-hidden="true">↗</span></a>';
+    }).join("");
+  }
+  function gemCard(g, full, s){
     return '<div class="card" data-scope><h4><span>'+(g.sub&&!full?'<span class="sub">'+esc(g.sub)+'</span>':'')+esc(g.title)+'</span></h4>'
-      +'<ul class="links">'+g.gems.map(gemLi).join("")+'</ul>'
+      +'<ul class="links">'+g.gems.map(function(x){return gemLi(x,s)}).join("")+'</ul>'
       +(g.text?'<p>'+esc(g.text)+'</p>':'')+(full?shots(g.imgs):'')+'</div>';
   }
   function findGroups(s, ids){ var all=GEMS[s].groups; return ids? all.filter(function(g){return ids.indexOf(g.id)>=0}) : all; }
@@ -86,7 +101,7 @@
   /* --- карточки внутри текста --- */
   document.querySelectorAll(".ins").forEach(function(el){
     var k=el.dataset.k, s=el.dataset.s, ids=el.dataset.ids?el.dataset.ids.split(","):null, body="", label="";
-    if(k==="gems"){ var gs=findGroups(s,ids); label="Камни · "+STAGES[s]+(gs[0]&&gs[0].sub?" · "+gs[0].sub:""); body='<div class="gg">'+gs.map(function(g){return gemCard({title:g.title,gems:g.gems},false)}).join("")+'</div>'; }
+    if(k==="gems"){ var gs=findGroups(s,ids); label="Камни · "+STAGES[s]+(gs[0]&&gs[0].sub?" · "+gs[0].sub:""); body='<div class="gg">'+gs.map(function(g){return gemCard({title:g.title,gems:g.gems},false,s)}).join("")+'</div>'; }
     if(k==="items"){ label="Вещи · "+STAGES[s]; body='<div>'+ITEMS[s].slots.map(slotRow).join("")+'</div>'; }
     if(k==="flasks"){ var fs=FLASKS[s].sets.filter(function(f){return !ids||ids.indexOf(f.id)>=0}); label="Флаконы · "+STAGES[s]; body='<div class="gg">'+fs.map(function(f){return flaskSet(f,false)}).join("")+'</div>'; }
     if(k==="craft"){ label="Флаконы · крафт флакона на хп"; body='<p style="margin:0">'+esc(FLASK_CRAFT.craft)+'</p><p style="margin:0">'+esc(FLASK_CRAFT.bad)+'</p>'; k="flasks"; }
@@ -98,7 +113,7 @@
   document.getElementById("p-gems").innerHTML = ST.map(function(s){
     var h='<h2>Камни: '+STAGES[s].toLowerCase()+'</h2>'+(GEMS[s].note?'<p class="note" data-scope>'+esc(GEMS[s].note)+'</p>':'<div style="height:14px"></div>');
     var subs=[], bySub={}; GEMS[s].groups.forEach(function(g){var k=g.sub||""; if(!bySub[k]){bySub[k]=[];subs.push(k)} bySub[k].push(g)});
-    subs.forEach(function(k){ h+=(k?'<div class="sub">'+esc(k)+'</div>':'')+'<div class="grid">'+bySub[k].map(function(g){return gemCard(g,true)}).join("")+'</div>'; });
+    subs.forEach(function(k){ h+=(k?'<div class="sub">'+esc(k)+'</div>':'')+'<div class="grid">'+bySub[k].map(function(g){return gemCard(g,true,s)}).join("")+'</div>'; });
     return stageWrap(s,h);
   }).join("");
   document.getElementById("p-items").innerHTML = ST.map(function(s){
