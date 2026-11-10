@@ -95,7 +95,7 @@ var GEMS = {
   maps: {
     note: "Сетап на лоу тир карты, ещё на обычной Ядовитой смеси.",
     groups: [
-      {id:"maps-dmg", title:"Основная связка камней", gems:["Ядовитая смесь (Poisonous Concoction)","Большой залп (Greater Volley)|16 лвл","Много дополнительных снарядов (Greater Multiple Projectiles)|16 лвл","Безграничные состояния (Unbound Ailments)","Яростные снаряды (Vicious Projectiles)","Манипуляция пустотой (Void Manipulation)|17 лвл"]},
+      {id:"maps-dmg", title:"Основная связка камней", gems:["Ядовитая смесь (Poisonous Concoction)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Яростные снаряды (Vicious Projectiles)","Манипуляция пустотой (Void Manipulation)"]},
       {id:"maps-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)"]},
       {id:"maps-aura", title:"Шлем", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
       {id:"maps-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
