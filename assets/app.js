@@ -25,7 +25,7 @@
   /* трейд: лига одна на весь сайт, при новой лиге менять только её */
   var TRADE_LEAGUE="Allflame", TRADE_HOST="https://ru.pathofexile.com/trade/search/";
   var RES3=["pseudo.pseudo_total_fire_resistance","pseudo.pseudo_total_cold_resistance","pseudo.pseudo_total_lightning_resistance"];
-  function flt(x){ var f={id:x[0],value:{}}; if(x[1]!=null) f.value.min=x[1]; return f; }
+  function flt(x){ var f={id:x[0],value:{}}; if(x[1]!=null) f.value.min=x[1]; if(x[2]!=null) f.value.max=x[2]; return f; }
   function tradeUrl(e){
     var q={status:{option:"securable"}}, st=[];
     if(e.n) q.name=e.n; if(e.t) q.type=e.t;
@@ -36,8 +36,10 @@
     if(st.length) q.stats=st;
     var f={};
     if(e.cat){ f.type_filters={filters:{category:{option:e.cat}}}; if(!e.n) f.type_filters.filters.rarity={option:"nonunique"}; }
-    if(e.links) f.socket_filters={filters:{links:{min:e.links}}};
-    if(e.cat||e.links) q.filters=f;
+    if(e.links||e.sockets){ var sf={}; if(e.links) sf.links={min:e.links}; if(e.sockets) sf.sockets={min:e.sockets}; f.socket_filters={filters:sf}; }
+    if(e.ar||e.es){ var af={}; if(e.ar) af.ar={min:e.ar}; if(e.es) af.es={min:e.es}; f.armour_filters={filters:af}; }
+    if(e.corr!=null) f.misc_filters={filters:{corrupted:{option:e.corr?"true":"false"}}};
+    for(var k in f){ q.filters=f; break; }
     return TRADE_HOST+encodeURIComponent(TRADE_LEAGUE)+"?q="+encodeURIComponent(JSON.stringify({query:q,sort:{price:"asc"}}));
   }
   var TR_TIP="Официальный трейд Path of Exile";
@@ -49,7 +51,7 @@
     }).join("");
     return multi ? '<div class="tbox"><span class="hlbl">Трейд:</span><span class="tcol">'+bs+'</span></div>' : bs;
   }
-  function resNote(it){ return (it.tr||[]).some(function(e){return e.r3}) ? '<div class="trnote">Добавляйте резисты на трейде по вашему билду</div>' : ""; }
+  function resNote(it){ return (it.tn?'<div class="trnote">'+esc(it.tn)+'</div>':'')+((it.tr||[]).some(function(e){return e.r3}) ? '<div class="trnote">Добавляйте резисты на трейде по вашему билду</div>' : ""); }
   function slotCard(it){
     var b=tradeBtns(it,"hbuy"), multi=it.tr&&it.tr.length>1;
     var h='<div class="card" data-scope><h4 class="slh"><span>'+esc(it.slot)+'</span>'+(b&&!multi?'<span class="hbuys">'+b+'</span>':'')+'</h4>'+(multi?b:'')+resNote(it);
