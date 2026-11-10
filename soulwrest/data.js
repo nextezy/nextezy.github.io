@@ -74,7 +74,7 @@ var GEMS = {
       {id:"m-mark", title:"Нагрудник: метка", gems:["Метка снайпера (Sniper's Mark)","Метка при попадании (Mark On Hit)"]},
       {id:"m-aura", title:"Шлем", gems:["Решимость (Determination)","Камень и плоть (Flesh and Stone)","Сбор (Convocation)|1 лвл","Гордость (Pride)"]},
       {id:"m-minions", title:"Ботинки", gems:["Аниматрон (Animate Guardian)","Голодное остервенение (Feeding Frenzy)","Призыв каменного голема (Summon Stone Golem)","Сотворение призрака (Raise Spectre)"]},
-      {id:"m-shell", title:"Перчатки", gems:["Расплавленный панцирь (Molten Shell)","Автоматизация (Automation)","Продление (More Duration)|16 лвл"]},
+      {id:"m-shell", title:"Перчатки", gems:["Расплавленный панцирь (Molten Shell)","Автоматизация (Automation)","Продление (More Duration)"]},
       {id:"m-blink", title:"Перчатки, отдельно", gems:["Ледяной скачок (Frostblink)"]}
     ]
   }

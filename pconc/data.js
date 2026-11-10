@@ -107,7 +107,7 @@ var GEMS = {
     note: "На этом этапе появляется 6-линк Дендрогнев, и в основную связку добавляется Greater Chain (+50% мор к количеству цепей).",
     groups: [
       {id:"red-dmg", title:"Основная связка камней", gems:["Отскакивающая ядовитая смесь (Poisonous Concoction of Bouncing)","Большой залп (Greater Volley)","Много дополнительных снарядов (Greater Multiple Projectiles)","Безграничные состояния (Unbound Ailments)","Манипуляция пустотой (Void Manipulation)","Большая цепь (Greater Chain)"]},
-      {id:"red-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)|19 лвл"]},
+      {id:"red-move", title:"Щит", gems:["Удар щитом (Shield Charge)","Ускорение атак (Faster Attacks)","Ледяной скачок (Frostblink)"]},
       {id:"red-aura", title:"Шлем", gems:["Вестник агонии (Herald of Agony)","Решимость (Determination)","Спасение от стихий (Purity of Elements)"]},
       {id:"red-def", title:"Ботинки", gems:["Сотворение чар при получении урона (Cast when Damage Taken)|4 лвл","Расплавленный панцирь (Molten Shell)|9 лвл","Продление (More Duration)"]},
       {id:"red-arr", title:"Перчатки", gems:["Точность (Precision)","Заносчивость (Arrogance)"]}
