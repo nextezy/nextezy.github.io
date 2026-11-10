@@ -18,7 +18,7 @@
     var G=window.GEM_TRADE; if(!G||!s) return "";
     var sp=G.special&&G.special[name], list;
     if(sp) list=sp;
-    else if(!lv && G.stages.indexOf(s)>=0) list=[{l:"20/20",lo:20,hi:20,q:20}];
+    else if(!lv && G.stages.indexOf(s)>=0) list=[{l:"20/20",lo:20,q:20}];
     else return "";
     var d=G.disc&&G.disc[name], t=d?{option:d[0],discriminator:d[1]}:((G.sup||[]).indexOf(name)>=0?"Поддержка: "+name:name);
     return list.map(function(e){
