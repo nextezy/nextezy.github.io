@@ -44,14 +44,15 @@
   function tradeBtns(it, cls){
     var tr=it.tr; if(!tr||!tr.length) return "";
     var multi=tr.length>1;
-    return (multi?'<span class="hlbl">Трейд:</span>':'')+tr.map(function(e){
+    var bs=tr.map(function(e){
       return '<a class="'+cls+'" href="'+esc(tradeUrl(e))+'" target="_blank" rel="noopener" title="'+TR_TIP+'">'+esc(multi?e.l:"Трейд")+' <span aria-hidden="true">↗</span></a>';
     }).join("");
+    return multi ? '<div class="tbox"><span class="hlbl">Трейд:</span><span class="tcol">'+bs+'</span></div>' : bs;
   }
   function resNote(it){ return (it.tr||[]).some(function(e){return e.r3}) ? '<div class="trnote">Добавляйте резисты на трейде по вашему билду</div>' : ""; }
   function slotCard(it){
-    var b=tradeBtns(it,"hbuy");
-    var h='<div class="card" data-scope><h4 class="slh"><span>'+esc(it.slot)+'</span>'+(b?'<span class="hbuys">'+b+'</span>':'')+'</h4>'+resNote(it);
+    var b=tradeBtns(it,"hbuy"), multi=it.tr&&it.tr.length>1;
+    var h='<div class="card" data-scope><h4 class="slh"><span>'+esc(it.slot)+'</span>'+(b&&!multi?'<span class="hbuys">'+b+'</span>':'')+'</h4>'+(multi?b:'')+resNote(it);
     if(it.u) h+='<p style="margin:0">'+it.u.map(uniq).join("<br>")+'</p>';
     if(it.req) h+='<div class="sub" style="margin:'+(it.u?'12px':'0')+' 0 6px;font-size:14px;color:var(--dim);font-weight:600">Обязательные свойства</div><ul class="req">'+it.req.map(function(r){return '<li>'+esc(r)+'</li>'}).join("")+'</ul>';
     if(it.text) h+='<p>'+esc(it.text)+'</p>';
@@ -64,7 +65,7 @@
     var v = it.u ? it.u.map(uniq).join(", ") : (it.req? esc(it.req.join(", ")) : esc(it.text||""));
     if(it.max) v+='<br><span class="en">Максимум: </span>'+uniq(it.max);
     var b=tradeBtns(it,"rbuy");
-    if(b) v+='<span class="rbuys">'+b+'</span>'+resNote(it);
+    if(b) v+=(it.tr.length>1?b:'<span class="rbuys">'+b+'</span>')+resNote(it);
     return '<div class="slotrow" data-scope><span class="sl">'+esc(it.slot)+'</span><span>'+v+'</span></div>';
   }
 

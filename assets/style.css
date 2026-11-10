@@ -353,3 +353,8 @@ figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .hlbl{font-size:14px;color:var(--dim);font-weight:600}
 .trnote{font-size:15px;color:var(--muted);margin:-4px 0 10px}
 .slotrow .trnote{margin:4px 0 0}
+.tbox{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px}
+.tbox .hlbl{line-height:28px}
+.tcol{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.slotrow .tbox{margin:6px 0 0}
+.slotrow .tbox .hlbl{line-height:24px}
