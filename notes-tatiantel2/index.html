@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQY86457FN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XQY86457FN');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Грозовой взрыв на Иерофанте: перевод заметок Tatiantel2 | Nextezy</title>
+<meta name="description" content="Перевод на русский заметок из PoB билда Tatiantel2: тотемы Грозового взрыва (Storm Burst) на Иерофанте.">
+<meta property="og:title" content="Грозовой взрыв на Иерофанте: перевод заметок Tatiantel2">
+<meta property="og:description" content="Перевод на русский заметок из PoB билда Tatiantel2: тотемы Грозового взрыва (Storm Burst) на Иерофанте.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nextezy.com/notes-tatiantel2/">
+<meta property="og:site_name" content="Nextezy">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://nextezy.com/assets/og.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nextezy.com/notes-tatiantel2/">
+<meta name="theme-color" content="#0b0b10">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/style.css?v=20261111-2">
+<style>
+  .src-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .src-links a{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:600;color:var(--fg);text-decoration:none;background:var(--s1);border:1px solid var(--line2);padding:11px 18px;border-radius:10px;transition:border-color .2s,background .2s}
+  .src-links a:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .src-links a i{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+  .src-links a.yt-l i{background:var(--yt)}
+  @media (max-width:640px){.src-links{padding-right:44px}}
+  .credit{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:16px 20px;margin:0 0 8px;font-size:17px}
+  .credit p{margin:0}
+  .mtoc{display:none;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:0 0 30px;font-size:17px}
+  .mtoc h4{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin:0 0 8px}
+  .mtoc ol{margin:0;padding-left:22px;gap:4px}
+  .mtoc a{text-decoration:none}
+  @media (max-width:980px){.mtoc{display:block}}
+  .lvl td:first-child{color:var(--accent-3);font-weight:600;white-space:nowrap;width:1%;font-variant-numeric:tabular-nums}
+  .dim{color:var(--dim)}
+  .qa h3{font-size:21px}
+  .old{border-top:1px dashed var(--line2);margin-top:72px;padding-top:4px}
+  .c-blue{color:#8b8bff;font-weight:600}.c-red{color:#f0705a;font-weight:600}.c-green{color:#6fe08f;font-weight:600}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" aria-label="Nextezy, на главную" href="../"><img class="brand-pic" src="/assets/sextezy-point.webp?v=2" alt="" width="365" height="200"><span class="logo">Nextezy</span></a><nav class="soc" aria-label="Nextezy в соцсетях">
+    <a href="https://www.youtube.com/@Nextezy/videos" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube"><img src="../assets/icon-youtube.png" alt="" width="30" height="21"></a>
+    <a href="https://t.me/nextezy1" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram"><img src="../assets/icon-telegram.png" alt="" width="28" height="28"></a>
+    <a href="https://www.twitch.tv/nextezy1" target="_blank" rel="noopener" title="Twitch" aria-label="Twitch"><img src="../assets/icon-twitch.png" alt="" width="28" height="28"></a>
+    <a href="https://discord.gg/pRnzf7ZGDk" target="_blank" rel="noopener" title="Discord" aria-label="Discord"><img src="../assets/icon-discord.png" alt="" width="28" height="28"></a>
+  </nav></div></header>
+
+<section class="hero"><div class="hero-bg" data-video="../assets/hero.mp4?v=2" aria-hidden="true"></div><div class="wrap">
+  <div class="crumbs"><span class="chip">PoE 1</span><span class="chip">Иерофант</span><span class="chip">Тотемы</span><span class="chip">Перевод</span></div>
+  <h1><em>Грозовой взрыв</em> на Иерофанте</h1>
+  <p class="lead">Перевод на русский заметок из PoB билда Tatiantel2: тотемы Грозового взрыва (Storm Burst) и Грозового взрыва отталкивания (Storm Burst of Repulsion).</p>
+  <div class="src-links">
+    <a class="yt-l" href="https://www.youtube.com/watch?v=IQlMZ5ddGp0" target="_blank" rel="noopener"><i></i>Видеогайд автора</a>
+    <a href="https://pobb.in/3fEqJKD_SfdN" target="_blank" rel="noopener"><i></i>PoB билда</a>
+    <a href="https://www.twitch.tv/tatiantel2" target="_blank" rel="noopener"><i></i>Twitch Tatiantel2</a>
+  </div>
+</div></section>
+
+<main><div class="wrap" style="padding-block:48px 90px">
+  <div class="guide">
+    <aside class="rail"><h4>Разделы</h4><ol id="toc"></ol></aside>
+    <article class="prose" id="notes">
+
+<nav class="mtoc" aria-label="Содержание"><h4>Разделы</h4><ol id="mtoc"></ol></nav>
+
+<div class="credit"><p>Билд сделал Tatiantel2. Вопросы и предложения можно писать в чат на Twitch (стримлю почти каждый день): <a href="https://www.twitch.tv/tatiantel2" target="_blank" rel="noopener">twitch.tv/tatiantel2</a></p></div>
+
+<section>
+<h2 id="leveling-gems">Камни для прокачки</h2>
+<p>Если смотреть камни для прокачки на сайте pobb.in, в выпадающем меню можно выбрать «LEVELING». Там видны умения и поддержки. Заметок к этим камням там не будет, поэтому вот список уровней для умений:</p>
+<div class="tbl"><table class="lvl">
+<thead><tr><th>Уровни</th><th>Камень</th></tr></thead>
+<tbody>
+<tr><td>2-16</td><td><span class="g">Штормовая мина (Stormblast Mine)</span></td></tr>
+<tr><td>4-8</td><td><span class="g">Тотем священного огня (Holy Flame Totem)</span></td></tr>
+<tr><td>4-10</td><td><span class="g">Ледяной скачок (Frostblink)</span></td></tr>
+<tr><td>4-32</td><td><span class="g">Стена пламени (Flame Wall)</span></td></tr>
+<tr><td>4-57</td><td><span class="g">Стальная кожа (Steelskin)</span> <span class="dim">(не важно)</span></td></tr>
+<tr><td>8-18</td><td><span class="g">Тотем священного огня (Holy Flame Totem)</span></td></tr>
+<tr><td>10-32</td><td><span class="g">Огненный рывок (Flame Dash)</span></td></tr>
+<tr><td>10-16</td><td><span class="g">Живучесть (Vitality)</span> <span class="dim">(не важно)</span></td></tr>
+<tr><td>16-32</td><td><span class="g">Вестник пепла (Herald of Ash)</span></td></tr>
+<tr><td>16-57</td><td><span class="g">Вестник чистоты (Herald of Purity)</span></td></tr>
+<tr><td>16-32</td><td><span class="g">Волна осуждения (Wave of Conviction)</span> минами</td></tr>
+<tr><td>18-32</td><td><span class="g">Тотем священного огня (Holy Flame Totem)</span></td></tr>
+<tr><td>32-68</td><td><span class="g">Проводимость (Conductivity)</span></td></tr>
+<tr><td>32-68</td><td><span class="g">Грозовой взрыв (Storm Burst)</span> тотемами</td></tr>
+<tr><td>32-57</td><td><span class="g">Волна осуждения (Wave of Conviction)</span> минами</td></tr>
+<tr><td>32-68</td><td><span class="g">Подрыв мин (Detonate Mines)</span> <span class="dim">(не важно)</span></td></tr>
+<tr><td>32-57</td><td><span class="g">Грозный гнев (Wrath)</span></td></tr>
+<tr><td>32+</td><td><span class="g">Удар щитом (Shield Charge)</span></td></tr>
+<tr><td>32+</td><td><span class="g">Ледяной скачок (Frostblink)</span></td></tr>
+<tr><td>38+</td><td><span class="g">Тотем-приманка (Decoy Totem)</span></td></tr>
+<tr><td>57+</td><td><span class="g">Грозный гнев (Wrath)</span></td></tr>
+<tr><td>57-68</td><td><span class="g">Волна осуждения (Wave of Conviction)</span> минами</td></tr>
+<tr><td>57+</td><td><span class="g">Чародейский покров (Arcane Cloak)</span></td></tr>
+<tr><td>68+</td><td><span class="g">Метка убийцы (Assassin's Mark)</span></td></tr>
+<tr><td>68+</td><td><span class="g">Призыв голема огня (Summon Flame Golem)</span></td></tr>
+<tr><td>68+</td><td><span class="g">Грозовой взрыв отталкивания (Storm Burst of Repulsion)</span> тотемами</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2 id="patch">Изменения в патче 3.29</h2>
+<h3>Нерфы</h3>
+<ol>
+<li><span class="g">Поддержка: Колдующий тотем (Spell Totem Support)</span></li>
+<li><span class="g">Чародейский покров (Arcane Cloak)</span></li>
+<li>Восхождение Иерофант (Ritual of Awakening)</li>
+<li>Небольшие нерфы шанса крита и крит множителя на дереве (Shaman's Dominion + маленькие ноды, мастерство тотемов)</li>
+</ol>
+<h3>Баффы</h3>
+<ol>
+<li>10% качества для <span class="g">Грозового взрыва (Storm Burst)</span></li>
+<li>10% качества для <span class="g">Чародейского покрова (Arcane Cloak)</span>, <span class="g">Поддержки: Продление (More Duration Support)</span> и <span class="g">Тотема-приманки (Decoy Totem)</span></li>
+<li><span class="g">Грозовой взрыв (Storm Burst)</span> получил больше базового урона и эффективности</li>
+<li>Исправили провокацию (Taunt), так что <span class="g">Тотем-приманка (Decoy Totem)</span> теперь работает как надо</li>
+</ol>
+<p>В сумме со всеми изменениями мы потеряли 10-15% урона, в зависимости от конкретного сетапа. Не критично, учитывая, что до этого нас баффали много лиг подряд.</p>
+</section>
+
+<section>
+<h2 id="versions">Версии билда «EARLY MAPS», «MEDIUM / SSF» и «Min-Max»</h2>
+<p>В PoB есть относительно новая функция «Loadouts». Она позволяет переключаться между разными версиями билда. Найди выпадающее меню в правом верхнем углу (справа от «Level», «Templar», «Hierophant» → «Loadouts»). Там есть варианты «EARLY MAPS», «MEDIUM / SSF» и «Min-Max». При выборе каждого PoB переключает дерево, шмот, умения и настройки на соответствующую версию.</p>
+<p>В игре: переходи с «EARLY MAPS» на «MEDIUM / SSF», когда получишь шмот с нужными эльдрическими имплисиками (генерация заряда ярости на нагруднике, экспозиция на перчатках, физический урон, получаемый как стихийный, на шлеме и нагруднике). С «MEDIUM / SSF» на «Min-Max» переходи, когда соберёшь все уники и одновременно рарки с подавлением чар (Spell Suppression) для капа 100%, плюс статы и резисты.</p>
+</section>
+
+<section>
+<h2 id="mechanic">Как работает Грозовой взрыв (отталкивания)</h2>
+<p>Чтобы скейлить урон <span class="g">Грозового взрыва (Storm Burst)</span>, можно использовать все обычные источники скейла чар: скорость сотворения чар, урон от стихий, урон от чар, пробивание стихий, шанс крита чарами, глобальный крит множитель.</p>
+<p>Но необычный и самый эффективный способ поднять урон это скейлить длительность эффекта умения (Skill Effect Duration). Пока тотемы поддерживают Грозовой взрыв, умение создаёт сферы, которые живут 1.6 секунды (при 20% качества камня) и прыгают каждые 0.4 секунды. Каждый прыжок сферы наносит урон. Интервал прыжков изменить нельзя (всегда 0.4с), а вот длительность сфер увеличить можно.</p>
+<p>То есть по умолчанию сфера прыгает 4 раза (1.6с / 0.4с). Если поднять длительность сферы до 2.0с, она прыгнет 5 раз, а это 25% больше урона: количество сфер то же, но каждая прыгает на один раз больше.</p>
+<p>Чтобы получить 2.0с, нужно 25% увеличения длительности эффекта умения (1.6с × 1.25 = 2.0с). Следующие пороги, соответственно: 2.4с, 2.8с, 3.2с и т.д. Это 50%, 75%, 100% и т.д. увеличения длительности.</p>
+<p>В этом билде мы берём 90% increased и 10% more длительности с дерева, плюс 49% more от <span class="g">Поддержки: Продление (More Duration Support)</span>. В итоге выходит 211% увеличенной длительности, и это даёт 200% more к полному урону. Можно скейлить длительность и дальше, но источников этого стата мало.</p>
+<p>У версии <span class="g">Грозовой взрыв отталкивания (Storm Burst of Repulsion)</span> скейл урона от длительности очень похожий, просто чуть другие цифры.</p>
+</section>
+
+<section>
+<h2 id="playstyle">Стиль игры и какие умения жать</h2>
+<h3>Маппинг</h3>
+<p>Ставь тотемы перед персонажем, прямо рядом с пачками монстров. Это сразу провоцирует их атаковать тотемы (благодаря мастерству тотемов), и по персонажу не бьют.</p>
+<p>Если встречаешь пачку побольше, после установки тотемов <span class="g">Грозового взрыва отталкивания (Storm Burst of Repulsion)</span> поставь <span class="g">Тотемы-приманки (Decoy Totem)</span> чуть в сторонке. У приманок большая область провокации, так что монстры соберутся вокруг них, и тотемы Грозового взрыва смогут спокойно кастовать.</p>
+<p>Против пачек с рарками вешай <span class="g">Метку убийцы (Assassin's Mark)</span> на рарку, чтобы убить её быстрее.</p>
+<h3>Боссинг</h3>
+<p>Против жирных врагов «ротация» такая:</p>
+<ol>
+<li>Поставить тотемы <span class="g">Грозового взрыва отталкивания (Storm Burst of Repulsion)</span>;</li>
+<li>Повесить <span class="g">Метку убийцы (Assassin's Mark)</span>;</li>
+<li>Поставить <span class="g">Тотемы-приманки (Decoy Totem)</span> (дают больше урона от восхождения и 10% less получаемого урона от дебаффа провокации);</li>
+<li>Спамить тотемы Грозового взрыва отталкивания (держать кнопку призыва тотемов).</li>
+</ol>
+<p>Для версии «Min-Max»: ещё самому кастовать <span class="g">Ползучий мороз (Creeping Frost)</span>, чтобы срабатывали перчатки <span class="u">Algor Mortis</span>. Ползучий мороз длится 15 секунд, и охлаждённая земля следует за врагом.</p>
+<h3>Пиннакл боссы</h3>
+<p>Против самых сложных боссов мне кажется стабильнее использовать обычные тотемы <span class="g">Грозового взрыва (Storm Burst)</span>, а не отталкивания. Просто меняешь камень, и всё. С обычным Грозовым взрывом НЕ нужно спамить переустановку тотемов, это сильно снизит урон.</p>
+</section>
+
+<section>
+<h2 id="leveling">Прокачка</h2>
+<p>Во вкладке «Tree» внизу можно выбрать разные деревья для разных уровней, чтобы видеть, какие пассивки брать на каждом этапе. Во вкладке «Skills» видно, какие умения использовать на каждом уровне. Не обязательно ставить все камни оттуда, если не хватает гнёзд в шмоте.</p>
+<p>Как показано во вкладке Skills, качаемся через <span class="g">Тотем священного огня (Holy Flame Totem)</span> и <span class="g">Стену пламени (Flame Wall)</span>, эта связка довольно легко чистит ранние акты.</p>
+<p>Ещё можно «замулить» проклятие <span class="g">Метка снайпера (Sniper's Mark)</span>, оно ещё сильнее поднимет урон Тотема священного огня. «Замулить» значит: создаёшь Дуэлянта, доходишь им до вейпоинта Submerged Passage, и тогда Метка снайпера будет предложена как награда за квест в городе.</p>
+<p>Рекомендуется как можно раньше (на 16 лвл) добавить <span class="g">Волну осуждения (Wave of Conviction)</span> минами.</p>
+<p>Когда пройдёшь квест в Библиотеке в 3 акте, можно купить камень <span class="g">Подрыв мин (Detonate Mines)</span>, вставить его в шмот и связать с <span class="g">Автоматизацией (Automation)</span>. Так больше не придётся жать Подрыв мин, только кидать мины. (Не забудь включить Автоматизацию на панели умений.)</p>
+<p>Переход на тотемы <span class="g">Грозового взрыва (Storm Burst)</span> примерно на 32 лвл, после первой лабы. Убедись, что камни Грозовой взрыв и <span class="g">Поддержка: Колдующий тотем (Spell Totem Support)</span> нужного уровня: если они сильно ниже уровня персонажа, сначала прокачай их во втором сете оружия (weapon swap), пока ещё играешь через Тотем священного огня.</p>
+<p>Переход на Mind over Matter примерно на 57 лвл, после второй лабы. Это даёт хороший источник регенерации маны, так что получение урона из маны становится не таким болезненным.</p>
+<p>В конце кампании фарми Безжалостную лабу (Merciless, та что 68 лвл), чтобы получить трансфигурированную версию камня Грозовой взрыв, то есть <span class="g">Грозовой взрыв отталкивания (Storm Burst of Repulsion)</span>. Его можно получить в Divine Font в конце лабы (там, где алтарь восхождения). Divine Font, начиная с Безжалостной лабы, иногда предлагает особый крафт «Transform a non-Transfigured Skill Gem to a Transfigured version», он гарантированно даст Грозовой взрыв отталкивания. Скорее всего, придётся пройти Безжалостную лабу несколько раз, чтобы выпала эта опция, так что заодно бери качество для Грозового взрыва в Divine Font.</p>
+<p><span class="g">Волну осуждения (Wave of Conviction)</span> минами используем примерно до 68 лвл, пока не получим Грозовой взрыв отталкивания. После этого мины больше не используем. Вместо них для доп урона спамим тотемы Грозового взрыва отталкивания.</p>
+</section>
+
+<section>
+<h2 id="leveling-uniques">Уники для прокачки</h2>
+<p>Хорошие уники для прокачки:</p>
+<ul>
+<li><span class="u">Replica Prismweave</span> (пояс)</li>
+<li><span class="u">Sacrificial Heart</span> (амулет)</li>
+<li><span class="u">Thrillsteel</span> (шлем)</li>
+<li>2x <span class="u">Replica Tasalio's Sign</span> (кольца)</li>
+<li><span class="u">Nycta's Lantern</span> (скипетр)</li>
+</ul>
+</section>
+
+<section>
+<h2 id="uniques">Возможные уники</h2>
+<p>Пока не можешь скрафтить или купить большую часть шмота из «MEDIUM / SSF», можно купить на трейде эти ранние уники:</p>
+<p><span class="u">Shimmeron</span>, <span class="u">Mindspiral</span>, <span class="u">Singularity</span>, <span class="u">Valako's Sign</span>, <span class="u">Dream Fragments</span>, <span class="u">Le Heup of All</span>, <span class="u">Replica Prismweave</span>.</p>
+<p>Эти уники тоже хорошие, но могут быть дороже:</p>
+<p><span class="u">The Dark Seer</span> (версия со здоровьем и маной), <span class="u">Replica Dragonfang's Flight</span> (ради +3 к Грозовому взрыву).</p>
+</section>
+
+<section>
+<h2 id="gear">Важный шмот</h2>
+<p>Самый важный предмет в билде: щит с влиянием Создателя (Shaper). На щите Создателя с ilvl 70+ может быть префикс «+1 к максимуму тотемов». Это даёт 35% more урона и хороший комфорт.</p>
+<p>На перчатках важно скрафтить на верстаке «(20-25)% физического урона превращается в урон от молнии». Нам нужно всего 10% конверсии, так что ролл не важен. Если переходишь на «Min-Max» версию шмота, там используются перчатки <span class="u">Algor Mortis</span>, а конверсию физы в молнию берём с модификатора самоцвета <span class="u">Watcher's Eye</span>.</p>
+<p>Эльдрические имплисики на шмоте тоже важны, самые важные:</p>
+<ol>
+<li>На нагруднике: «Gain a Frenzy Charge every 15 seconds» (получаешь, спамя Lesser Eldritch Ember);</li>
+<li>На шлеме и нагруднике: «% физического урона от ударов получается как урон от молнии (или огня, холода)». На шлем это делается через Lesser Eldritch Ichor, на нагруднике этот мод новый с патча 3.25, точно мы пока не знаем, но я предполагаю, что тоже через Ichor.</li>
+</ol>
+<p>К моменту, когда начнёшь фармить джусованные т16 карты, нужно набрать 100% шанс подавления чар (Spell Suppression), так что подавление нужно на большинстве шмоток. Не джусованные (синие) т16 можно фармить и без подавления, просто не роллить на карте модов на урон.</p>
+<p>До 16% скорости сотворения чар на кольцах очень приятно, и это довольно легко скрафтить: спамь «Reforge Caster modifier» на станции Harvest (каждый такой реролл гарантирует скорость каста).</p>
+<p>На кольца крафтим на верстаке «+1 к минимуму зарядов выносливости», когда возьмёшь +1 к максимуму зарядов выносливости с пассивки на дереве и второй с аннойнта амулета.</p>
+</section>
+
+<section>
+<h2 id="frenzy">Генерация зарядов ярости</h2>
+<p>У нас 6 минимальных зарядов выносливости и 5 минимальных зарядов энергии, так что они активны всегда.</p>
+<p>Чтобы получить постоянные заряды ярости, нужно:</p>
+<ol>
+<li>На нагруднике, спамя Lesser Eldritch Ember, получить имплисит «Gain a Frenzy Charge every 15 seconds»;</li>
+<li>На дереве в мастерстве зарядов (нотабл Disciple of the Forbidden) взять 100% увеличения длительности зарядов.</li>
+</ol>
+<p>Так, когда заходишь на карту, за 45 секунд сгенерируются 3 заряда ярости, и дальше они будут обновляться автоматически.</p>
+</section>
+
+<section>
+<h2 id="hardcore">Доп защита для хардкора</h2>
+<p>Так как урон у билда очень большой, можно заменить проклятие <span class="g">Метка убийцы (Assassin's Mark)</span> на <span class="g">Слабость (Enfeeble)</span>, это добавит много живучести.</p>
+<p>Ещё можно добавить защиту от стихийных состояний: роллить на имплисик перчаток (через Eldritch Ember) «шанс потушить врагов при ударе» вместо шанса Unnerve. Потушенные враги не могут накладывать стихийные состояния.</p>
+</section>
+
+<section class="qa">
+<h2 id="faq">ЧаВо</h2>
+<h3>Какой пантеон и выбор бандитов?</h3>
+<p>Бандиты: убить всех. Пантеон: Soul of the Brine King, Soul of Garukhan.</p>
+<h3>Можно ли ставить Поддержку: Множество тотемов (Multiple Totems Support) в основную связку тотемов?</h3>
+<p>Нет. Сама поддержка даст только 20% more общего урона, но уменьшит количество ударов от каждого тотема, а значит и шоки, которые они накладывают. В итоге эта поддержка это большая потеря урона по сравнению с любым другим вариантом.</p>
+<p>Ещё она снижает скорость маппинга, потому что тотемы можно поставить только в 3 разных места (3×2 тотема) вместо 4 мест (4×1 тотем), то есть покрытие урона меньше.</p>
+<h3>Soul Mantle с Self-Flagellation это хороший вариант?</h3>
+<p>Комбо из <span class="u">Soul Mantle</span>, <span class="u">Self-Flagellation</span>, <span class="u">Viridi's Veil</span> и <span class="u">Coward's Legacy</span> с Pain Attunement с дерева. Даёт в сумме 60% more урона и 55% less эффективного запаса здоровья против ударов. Сейчас у билда очень хороший урон и хорошая защита.</p>
+<p>Переход на Soul Mantle превратит его в «отличный урон и плохая защита». Я считаю, что оно того не стоит, потому что вместо сбалансированного билда получится что-то близкое к стеклянной пушке.</p>
+<h3>Я связал Чародейский покров (Arcane Cloak) с Автоматизацией (Automation), но не работает, почему?</h3>
+<p>Нужно поставить умение <span class="g">Автоматизация (Automation)</span> на панель умений и включить его как ауру. С патча 3.25 умения через Автоматизацию больше не срабатывают в убежище. Если зайти в зону с врагами, всё заработает.</p>
+<h3>Если у нас есть мастерство тотемов на провокацию, зачем ещё Тотем-приманка (Decoy Totem)?</h3>
+<p>Провокация от мастерства накладывается мгновенно, это отлично, чтобы быстро отвлечь врагов. Но она длится всего 1 секунду. Поэтому после короткой быстрой провокации от мастерства ставим приманку, которая провоцирует постоянно.</p>
+<h3>Как билд против убер боссов? Nightmare карты?</h3>
+<p>Хорош для уберов, когда наберёшь около 30 миллионов дпс. Если идти к уберам раньше, нужно хорошо уворачиваться от механик боссов, потому что сильного сустейна у нас нет. Для уберов лучше использовать обычный <span class="g">Грозовой взрыв (Storm Burst)</span>.</p>
+<p>Для фарма Nightmare карт билд неплохой, но только когда соберёшь очень хороший шмот.</p>
+<h3>Какие уники использовать для прокачки в трейд лиге?</h3>
+<p>Смотри раздел <a href="#leveling-uniques">«Уники для прокачки»</a> в этих заметках.</p>
+<h3>Перешёл на тотемы Грозового взрыва на 32 лвл, но тотемы умирают / мало урона?</h3>
+<p>Проверь, что камни <span class="g">Грозовой взрыв (Storm Burst)</span> и <span class="g">Поддержка: Колдующий тотем (Spell Totem Support)</span> нужного уровня. Если они сильно ниже уровня персонажа, сначала прокачай их во втором сете оружия, пока играешь через Тотем священного огня.</p>
+<h3>Начал использовать Поддержку: Вечное благословение (Eternal Blessing Support) на ауре, но мины Волны осуждения перестали работать.</h3>
+<p>Мины нужно связать с <span class="g">Поддержкой: Заносчивость (Arrogance Support)</span>.</p>
+</section>
+
+<section class="old">
+<h2 id="imbued">Система имбуед камней (только в патче 3.28)</h2>
+<p class="dim">Я не стал удалять эту часть заметок на случай, если в 3.29 к имбуед камням как-то останется доступ.</p>
+<p>Механика лиги 3.28 Mirage даёт особые монеты, которые можно использовать на камень 20 лвл, чтобы заразить (коррапт) его и добавить случайную поддержку 1 лвл определённого цвета. При добавлении поддержки камень заражается, так что теряется коррапт на +1 лвл. Сравнение урона: обычный камень 21 лвл против камня 20 лвл с поддержкой.</p>
+<p>Список поддержек 1 лвл, которые хороши для имбуед версии Грозового взрыва:</p>
+<h3><span class="c-blue">Синие</span> (9 из 28)</h3>
+<ul>
+<li><span class="g">Поддержка: Учащение критических ударов (Increased Critical Strikes)</span> (14% more урона), заменить Учащение критических ударов 20 лвл на Усиленное поддержание (Infused Channelling) 20 лвл;</li>
+<li><span class="g">Поддержка: Усиленное поддержание (Infused Channelling)</span> (12% more урона);</li>
+<li><span class="g">Поддержка: Заряд энергии при критическом ударе (Power Charge On Critical)</span> (12% more урона);</li>
+<li><span class="g">Поддержка: Усиление критических ударов (Increased Critical Damage)</span> (11% more урона), заменить Усиление критических ударов 20 лвл на Усиленное поддержание 20 лвл;</li>
+<li><span class="g">Поддержка: Пронизывающие молнии (Lightning Penetration)</span> (6% more урона), заменить Пронизывающие молнии 20 лвл на Усиленное поддержание 20 лвл;</li>
+<li><span class="g">Поддержка: Физический урон в молнии (Physical to Lightning)</span> (комфорт), экономит 1 очко на дереве и крафт на перчатках;</li>
+<li><span class="g">Поддержка: Ускоренное сотворение чар (Faster Casting)</span> (2% more урона);</li>
+<li><span class="g">Поддержка: Эффективность (Efficacy)</span> (1% more урона);</li>
+<li><span class="g">Поддержка: Расширенная область действия (Increased Area of Effect)</span> (чуть стабильнее перекрытия).</li>
+</ul>
+<h3><span class="c-red">Красные</span> (3 из 18)</h3>
+<ul>
+<li><span class="g">Поддержка: Вдохновение (Inspiration)</span> (11% more урона);</li>
+<li><span class="g">Поддержка: Злость (Cruelty)</span> (8% more урона);</li>
+<li><span class="g">Поддержка: Продление (More Duration)</span> (3% more урона), заменить Продление 20 лвл на Усиленное поддержание 20 лвл.</li>
+</ul>
+<h3><span class="c-green">Зелёные</span> (1 из 14)</h3>
+<ul>
+<li><span class="g">Поддержка: Добивание (Culling Strike)</span> (~4% more урона).</li>
+</ul>
+</section>
+
+<div class="credit" style="margin-top:56px"><p>Билд сделал Tatiantel2. Вопросы и предложения можно писать в чат на Twitch (стримлю почти каждый день): <a href="https://www.twitch.tv/tatiantel2" target="_blank" rel="noopener">twitch.tv/tatiantel2</a></p></div>
+
+    </article>
+  </div>
+</div></main>
+<footer><div class="wrap foot">
+  <div class="foot-top"><span>© Nextezy, 2026</span><a href="../privacy/">Политика конфиденциальности</a></div>
+  <p class="foot-note">Сайт не связан с Grinding Gear Games. Path of Exile является товарным знаком Grinding Gear Games. Скриншоты из игры используются в информационных целях.</p>
+</div></footer>
+<script>
+(function(){
+  var art=document.getElementById("notes"), toc=document.getElementById("toc"), mtoc=document.getElementById("mtoc");
+  var heads=[].slice.call(art.querySelectorAll("h2[id]"));
+  heads.forEach(function(h){
+    [toc,mtoc].forEach(function(ol){ var li=document.createElement("li"), a=document.createElement("a"); a.href="#"+h.id; a.textContent=h.textContent; li.appendChild(a); ol.appendChild(li); });
+  });
+  var links=[].slice.call(toc.querySelectorAll("a"));
+  var ind=document.createElement("span"); ind.className="ind"; toc.appendChild(ind); toc.classList.add("has-ind");
+  var first=true, cur=null;
+  function place(){ var a=toc.querySelector("a.on"); if(!a) return; if(first){ind.style.transition="none";} ind.style.top=a.offsetTop+"px"; ind.style.height=a.offsetHeight+"px"; if(first){ind.offsetHeight; ind.style.transition=""; first=false;} }
+  function update(){
+    var y=window.scrollY+140, c=heads[0];
+    heads.forEach(function(h){ if(h.getBoundingClientRect().top+window.scrollY<=y) c=h; });
+    if(c===cur) return; cur=c;
+    links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href")==="#"+c.id); });
+    place();
+  }
+  window.addEventListener("scroll",update,{passive:true});
+  window.addEventListener("resize",function(){first=true;place();});
+  update();
+})();
+</script>
+<script src="../assets/hero.js?v=20261103-1"></script>
+<script src="../assets/egg.js?v=20261103-1"></script>
+</body>
+</html>
