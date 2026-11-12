@@ -32,6 +32,7 @@
 
 ```
 index.html            главная: список гайдов карточками
+test-home2/           ТЕСТ главной, вариант с вкладками в шапке: большая «Гайды» и маленькая «Переводы и адаптации», переключаются без перезагрузки, #translations открывает вторую (noindex). Никита выбирает между test-home и test-home2; ненужный удалить
 test-home/            ТЕСТ главной с блоком «Переводы и адаптации» (noindex, не в sitemap); удалить, когда блок перенесём на главную
 privacy/index.html    политика конфиденциальности (Google Analytics, cookies, localStorage, GitHub Pages, контакт t.me/nextezy)
 pconc/                гайд «Отскакивающая ядовитая смесь на Следопыте» (видео https://www.youtube.com/watch?v=Hnzim144cfk в шапке)
