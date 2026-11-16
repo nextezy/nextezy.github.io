@@ -18,7 +18,7 @@ html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important
   --line:#272734; --line2:#363646;
   --fg:#f6f6f8; --fg2:#dedee6; --muted:#9d9db0; --dim:#74748a;
   --accent:#8b5cf6; --accent-2:#a78bfa; --accent-3:#c4b5fd; --accent-soft:rgba(139,92,246,.14); --yt:#ff0033;
-  --gem:#5fd4c4; --unique:#f5b26b; --good:#4ade80; --bad:#f87171;
+  --gem:#5fd4c4; --unique:#f5b26b; --good:#4ade80; --bad:#f87171; --bad-soft:rgba(248,113,113,.10); --warn:#fbbf24; --warn-soft:rgba(251,191,36,.09);
   --f:"Onest","Segoe UI",Roboto,Arial,sans-serif;
   color-scheme:dark;
 }
@@ -376,3 +376,17 @@ figure.hsfig figcaption{font-size:15px;color:var(--dim);margin-top:8px}
 .fl-why{font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
 .fl-card h4.slh{flex-wrap:nowrap;align-items:flex-start}
 .fl-card h4.slh .hbuys{flex:none}
+/* моды карт */
+.mapmods{display:grid;gap:14px;margin:18px 0}
+.mm{border-radius:14px;border:1px solid var(--line);padding:16px 20px 6px;background:var(--s1)}
+.mm h4{margin:0 0 10px;font-size:18px;display:flex;align-items:center;gap:10px}
+.mm h4::before{content:"";width:10px;height:10px;border-radius:50%;flex:none}
+.mm.no{border-color:rgba(248,113,113,.45);background:var(--bad-soft)}
+.mm.no h4{color:var(--bad)} .mm.no h4::before{background:var(--bad)}
+.mm.meh{border-color:rgba(251,191,36,.4);background:var(--warn-soft)}
+.mm.meh h4{color:var(--warn)} .mm.meh h4::before{background:var(--warn)}
+.mm ul{list-style:none;padding:0;margin:0}
+.mm li{padding:10px 0;border-top:1px solid var(--line)}
+.mm li:first-child{border-top:0;padding-top:2px}
+.mm .mt{display:block;color:var(--fg);font-weight:600}
+.mm .mw{display:block;color:var(--muted);font-size:17px;margin-top:3px}
